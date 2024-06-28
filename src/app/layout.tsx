@@ -2,12 +2,18 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import React from "react";
-import { Navbar } from "@/app/(browse)/_components/Navbar";
 import { Toaster } from "@/components/ui/sonner";
 import ToastContainer from "@/components/ToastContainer";
 import { currentUser } from "@/lib/services/auth.service";
 import { Providers } from "@/components/providers/Providers";
 import { Player } from "@/components/Player/Player";
+import { Sidebar } from "@/components/Sidebar";
+import { LogoutButton } from "@/components/LogoutButton";
+import { ProfileButton } from "@/components/ProfileButton";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { SearchInput } from "@/components/Navbar/SearchInput";
+import { Navbar } from "./(browse)/_components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,13 +33,15 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="grid grid-rows-[70px+1fr] text-primary h-screen">
-            <Navbar user={profile} />
-            <main className="bg-background flex h-full overflow-hidden">
+          <div className="grid grid-cols-[auto+1fr] text-primary h-screen overflow-hidden">
+            <Sidebar profile={profile} />
+            <main
+              className="relative bg-background h-full pb-2 overflow-auto">
+              <Navbar profile={profile} />
               {children}
+              <Player />
             </main>
           </div>
-          <Player />
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />
         </Providers>

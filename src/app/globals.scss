@@ -75,6 +75,17 @@
   }
 }
 
+main {
+  background: linear-gradient(
+    180deg,
+    rgba(40, 40, 40, 1) 0%,
+    rgba(25, 20, 20, 1) 100%
+  );
+  &.light {
+    background: var(--background);
+  }
+}
+
 *::-webkit-scrollbar {
   background: transparent;
   width: 3px;

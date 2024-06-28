@@ -9,7 +9,7 @@ import { auth } from "@/lib/services/auth.service";
 export const getUsersPage = async (
   page?: number,
   search?: string,
-  size?: number,
+  size?: number
 ) => {
   try {
     const res = await UsersApi.getUsers(page || 0, search, size);

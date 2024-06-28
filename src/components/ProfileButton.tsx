@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export const ProfileButton: FC<{ user: IUser }> = ({ user }) => {
   return (
     <Link href={`/profile/${user.id}`}>
-      <Avatar>
+      <Avatar className="border border-secondary">
         <AvatarImage src={user.image || ""} />
         <AvatarFallback>Profile</AvatarFallback>
       </Avatar>

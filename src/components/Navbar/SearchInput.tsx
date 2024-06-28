@@ -15,13 +15,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Music, Users, BookAudio, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useDebounce } from "use-debounce";
 
 interface Props {
-  className: string;
+  className?: string;
 }
 
 export const SearchInput: FC<Props> = ({ className }) => {
   const [search, setSearch] = useState("");
+  const [debounceSearch] = useDebounce(search, 300);
   const [songs, setSongs] = useState<ISong[]>([]);
   const [users, setUsers] = useState<IUser[]>([]);
   const [playlists, setPlaylists] = useState<IPlaylist[]>([]);
@@ -33,14 +35,14 @@ export const SearchInput: FC<Props> = ({ className }) => {
   const form = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (search) {
-      getUsersPage(0, search, 3).then((res) => {
+    if (debounceSearch) {
+      getUsersPage(0, debounceSearch, 3).then((res) => {
         if (res?.users) setUsers(res.users);
       });
-      getSongsPage(0, search, 2).then((res) => {
+      getSongsPage(0, debounceSearch, 2).then((res) => {
         if (res?.songs) setSongs(res.songs);
       });
-      getPlaylistPage(0, search, 2).then((res) => {
+      getPlaylistPage(0, debounceSearch, 2).then((res) => {
         if (res?.playlists) setPlaylists(res.playlists);
       });
     } else {
@@ -48,7 +50,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
       setSongs([]);
       setPlaylists([]);
     }
-  }, [search]);
+  }, [debounceSearch]);
 
   const close = () => {
     setActive(false);
@@ -63,20 +65,10 @@ export const SearchInput: FC<Props> = ({ className }) => {
     if (!search) return;
     form.current?.reset();
     close();
-    // startTransition(() => {
-    //   searchSubmitHandler(String(search)).then((value) => {
-    //     form.current?.reset();
-    //     setSearch("");
-    //     setActive(false);
-    //     setUsers([]);
-    //     setSongs([]);
-    //     setPlaylists([]);
-    //   });
-    // });
   };
 
   return (
-    <div className={cn("lg:w-4/12 relative h-[60%]", className || "")}>
+    <div className={cn(" relative h-[60%]", className || "")}>
       <Dialog
         open={isActive}
         onOpenChange={(open) => {

@@ -41,7 +41,7 @@ export const UserCard: FC<Props> = ({
   return (
     <div className={"flex flex-col gap-3 items-center p-4 rounded-[10px] "}>
       <Image
-        src={user.image || ""}
+        src={user.image || "/user.webp"}
         alt={"image"}
         width={500}
         height={600}

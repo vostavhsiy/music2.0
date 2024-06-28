@@ -134,15 +134,15 @@ export const Player = () => {
   return (
     <div
       className={cn(
-        "fixed bottom-1 left-1/2 p-3 rounded-xl -translate-x-1/2 bg-secondary/80 backdrop-blur flex flex-col items-start justify-between animate-in duration-500",
-        collapse ? "w-[13%]" : "w-[85%] gap-3",
+        "fixed bottom-0 left-1/2 p-3 rounded-xl rounded-b-none -translate-x-1/2 bg-background border-[3px] backdrop-blur flex flex-col items-start justify-between animate-in duration-500",
+        collapse ? "w-[13%]" : "w-4/5 gap-3"
       )}
     >
       {!collapse && (
         <Button
           size={"xxl"}
           variant={"secondary"}
-          className="absolute top-[10px] right-[10px]"
+          className="absolute top-[10px] right-[10px] z-[1]"
           onClick={() => {
             dispatch(setCurrentSong(null));
           }}
@@ -150,23 +150,23 @@ export const Player = () => {
           <X />
         </Button>
       )}
-      <Button
+      {/* <Button
         size={"xxl"}
         variant={"secondary"}
         className={cn(
           "absolute top-0 left-1/2 -translate-x-1/2",
-          collapse ? "-translate-y-[80%]" : "-translate-y-1/2",
+          collapse ? "-translate-y-[80%]" : "-translate-y-1/2"
         )}
         onClick={() => {
           setCollapse((prev) => !prev);
         }}
       >
         {!collapse ? <ArrowDown /> : <ArrowUp />}
-      </Button>
+      </Button> */}
       <div
         className={cn(
-          "flex items-center w-full",
-          collapse ? "justify-center" : "pl-3 gap-10",
+          "relative flex items-center w-full",
+          collapse ? "justify-center" : "pl-3 gap-10"
         )}
       >
         {!collapse && (
@@ -189,7 +189,7 @@ export const Player = () => {
           </div>
         )}
 
-        <div className="flex items-center gap-1">
+        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center gap-1">
           <Button
             disabled={fetching}
             onClick={async () => {
@@ -223,7 +223,7 @@ export const Player = () => {
         </div>
       </div>
       {!collapse && (
-        <div className="w-full p-3 py-0">
+        <div className="w-3/4 mx-auto p-3 py-0">
           <TrackDuration player={player} />
         </div>
       )}
@@ -241,6 +241,8 @@ const TrackDuration: FC<{ player: AudioPlayer }> = ({ player }) => {
   return (
     <div className="flex flex-col gap-4">
       <Slider
+        //@ts-ignore
+        gradient={true}
         value={[time]}
         max={player.player.duration}
         onValueChange={([value]) => {
