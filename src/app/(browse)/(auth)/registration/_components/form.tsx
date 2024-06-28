@@ -1,57 +1,42 @@
 "use client";
 
-import { useTransition } from "react";
+import React, { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Formik, Form as FormikForm } from "formik";
 import { InputComponent } from "@/components/InputComponent";
-import { useRouter } from "next/navigation";
-import { login } from "@/actions/auth.actions";
+import { redirect, useRouter } from "next/navigation";
+import { login, registration } from "@/actions/auth.actions";
 import { toast } from "sonner";
+import { Input } from "@/components/ui/input";
+import { revalidatePath } from "next/cache";
 
 export const Form = () => {
   const router = useRouter();
 
+  const [file, setFile] = useState<File | null>(null);
+
   const [isPending, startTransition] = useTransition();
 
-  return (
-    <Formik
-      initialValues={{
-        login: "",
-        password: "",
-        rememberMe: false,
-      }}
-      onSubmit={(values, { setFieldError }) => {
-        if (values.login && values.password) {
-          startTransition(() => {
-            login(values).then((res) => {
-              if (res) {
-                toast("You logged in");
-                router.push("/");
-              } else {
-                toast("Error");
-              }
-            });
-          });
+  const submitHandler = async (data: FormData) => {
+    startTransition(() => {
+      registration(data).then((res) => {
+        if (res) {
+          toast.success("You sign up successfully!");
+          setFile(null);
+          router.push("/login");
         } else {
-          setFieldError("password", "Fill all fields");
+          toast.error("Error");
         }
-      }}
-    >
-      {({ errors }) => (
-        <FormikForm>
-          <InputComponent name="login" placeholder={"Login"} />
-          <InputComponent name="password" placeholder={"Password"} />
-          <InputComponent
-            type={"checkbox"}
-            name="rememberMe"
-            placeholder={"Login"}
-          />
-          {errors.password && <h3>{errors.password}</h3>}
-          <Button disabled={isPending} type={"submit"}>
-            Login
-          </Button>
-        </FormikForm>
-      )}
-    </Formik>
+      });
+    });
+  };
+
+  return (
+    <form action={submitHandler} className="flex flex-col gap-[20px] w-full">
+      <Input placeholder={"Login"} name={"login"} />
+      <Input placeholder={"Password"} name={"password"} type={"password"} />
+      <Input name={"image"} file={file} setFile={setFile} type={"file"} />
+      <Button type={"submit"}>Sign up</Button>
+    </form>
   );
 };
