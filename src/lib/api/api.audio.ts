@@ -12,7 +12,7 @@ export class AudioApi {
     >(
       `/songs/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }`,
+      }`
     );
     return res.data;
   }
@@ -26,7 +26,7 @@ export class AudioApi {
           author: string;
         }
       | FormData,
-    accessToken: string,
+    accessToken: string
   ) {
     const res = await instance.post<ISong & { message: string }>(
       `/songs`,
@@ -35,14 +35,14 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      },
+      }
     );
     return res.data;
   }
 
   static async deleteSong(
     { id, imageEtc }: { id: string; imageEtc?: string },
-    accessToken: string,
+    accessToken: string
   ) {
     const res = await instance.delete<
       { song: ISong; id: string } & { message: string }
@@ -62,9 +62,7 @@ export class AudioApi {
   }
 
   static async getSongFile(src: string) {
-    //const res = await instance.get<string>("/songs/file/" + id);
     const res = await axios.get<ArrayBuffer>(src, {
-      withCredentials: true,
       responseType: "arraybuffer",
       headers: {
         "Content-Type": "audio/wav",
@@ -79,21 +77,21 @@ export class AudioApi {
     >(
       `/playlists/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }`,
+      }`
     );
     return res.data;
   }
 
   static async getPlaylist(id: string) {
     const res = await instance.get<IPlaylist & { message: string }>(
-      `/playlist/${id}`,
+      `/playlist/${id}`
     );
 
     return res.data;
   }
   static async createPlaylist(
     payload: { title: string; songs: Array<{ id: string }> } | FormData,
-    accessToken: string,
+    accessToken: string
   ) {
     const res = await instance.post<IPlaylist & { message: string }>(
       "/playlists",
@@ -102,7 +100,7 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      },
+      }
     );
     return res.data;
   }
@@ -110,7 +108,7 @@ export class AudioApi {
   static async deletePlaylist(
     id: string,
     imageEtc: string,
-    accessToken: string,
+    accessToken: string
   ) {
     const res = await instance.delete<
       { playlist: IPlaylist; id: string } & { message: string }
@@ -137,7 +135,7 @@ export class AudioApi {
   static async addListenToSong(
     songId: string,
     userId: string,
-    accessToken: string,
+    accessToken: string
   ) {
     const res = await instance.patch<{ song: ISong }>(
       `/song/${songId}/listen/${userId}`,
@@ -146,7 +144,7 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      },
+      }
     );
     return res.data;
   }

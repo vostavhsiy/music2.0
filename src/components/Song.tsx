@@ -40,7 +40,7 @@ export const Song: FC<Props> = ({
     <div
       className={cn(
         "flex items-center justify-between rounded-xl",
-        inSearch ? "py-1" : "p-2",
+        inSearch ? "py-1" : "p-2"
       )}
     >
       <div className="flex items-center gap-3">
@@ -51,7 +51,7 @@ export const Song: FC<Props> = ({
           height={500}
           className={cn(
             "object-cover object-center rounded-full",
-            inSearch ? "w-[30px] h-[30px]" : "w-[50px] h-[50px]",
+            inSearch ? "w-[30px] h-[30px]" : "w-[50px] h-[50px]"
           )}
         />
         <div className={cn("flex flex-col", inSearch ? "gap-0.5" : "gap-2")}>
@@ -67,10 +67,7 @@ export const Song: FC<Props> = ({
             disabled={isPending}
             onClick={() => {
               startTransition(() => {
-                downloadAudio(
-                  song.file,
-                  song.title + "." + song.file.split(".").slice(-1),
-                )
+                downloadAudio(song.file, song.title + ".mp3")
                   .then((file) => {
                     if (!file) {
                       return toast.error("Error");
@@ -95,10 +92,7 @@ export const Song: FC<Props> = ({
             size={"icon"}
             onClick={async () => {
               startTransition(() => {
-                deleteSong(
-                  song.id,
-                  song.image ? song.image.split(".")[-1] : "",
-                ).then((res) => {
+                deleteSong(song.id, song.image).then((res) => {
                   if (res) {
                     toast.success("Song deleted");
                   }

@@ -3,7 +3,7 @@ import { AudioApi } from "@/lib/api/api.audio";
 export const getSongsPage = async (
   page?: number,
   search?: string,
-  size?: number,
+  size?: number
 ) => {
   try {
     const res = await AudioApi.getSongs(page || 0, size, search);
@@ -21,7 +21,7 @@ export const getSongsPage = async (
 export const getPlaylistPage = async (
   page?: number,
   search?: string,
-  size?: number,
+  size?: number
 ) => {
   try {
     const res = await AudioApi.getPlaylists(page || 0, size, search);

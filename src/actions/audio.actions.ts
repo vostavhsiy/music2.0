@@ -75,7 +75,7 @@ export const createPlaylist = async (
 };
 
 export const deletePlaylist = async (id: string, imageEtc: string) => {
-  const user = await currentUser();
+    const user = await currentUser();
   const accessToken = await getAccessToken();
   if (!user || !accessToken) return false;
   try {
