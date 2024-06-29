@@ -4,17 +4,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Scrollbar } from "swiper/modules";
 import { ISong } from "@/lib/types/ISong";
-import { PopularSong } from "./PopularSong";
+import { UserPlaylist } from "./UserPlaylist";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { useCallback, useRef } from "react";
 import Link from "next/link";
+import { IPlaylist } from "@/lib/types/IPlaylist";
 
 interface Props {
-  songs: ISong[];
+  playlists: IPlaylist[];
+  userId: string;
 }
 
-export function PopularSongsSlider({ songs }: Props) {
+export function UserPlaylistsSlider({ playlists, userId }: Props) {
   const sliderRef = useRef<SwiperType>();
   const nextEl = useRef<HTMLButtonElement>(null);
 
@@ -24,15 +26,15 @@ export function PopularSongsSlider({ songs }: Props) {
   }, []);
 
   return (
-    <div>
+    <div className="mt-20">
       <div className="mb-8 text-primary flex justify-between gap-2 items-center">
         <h2 className="text-4xl font-semibold">
-          Popular{" "}
-          <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
-            songs
+          Your{" "}
+          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            playlists
           </span>
         </h2>
-        <Link className="text-slate-300 uppercase" href="/songs/1?sortBy=listens">
+        <Link className="text-slate-300 uppercase" href={`/profile/${userId}`}>
           See all
         </Link>
       </div>
@@ -65,10 +67,10 @@ export function PopularSongsSlider({ songs }: Props) {
             },
           }}
         >
-          {songs.map((song) => {
+          {playlists.map((playlist) => {
             return (
-              <SwiperSlide key={song.id}>
-                <PopularSong song={song} playlist={songs} />
+              <SwiperSlide key={playlist.id}>
+                <UserPlaylist playlist={playlist} />
               </SwiperSlide>
             );
           })}

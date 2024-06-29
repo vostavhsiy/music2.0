@@ -134,7 +134,7 @@ export const Player = () => {
   return (
     <div
       className={cn(
-        "fixed bottom-0 left-1/2 p-3 rounded-xl rounded-b-none -translate-x-1/2 bg-background border-[3px] backdrop-blur flex flex-col items-start justify-between animate-in duration-500",
+        "fixed z-[1000] bottom-0 left-1/2 p-3 rounded-xl rounded-b-none -translate-x-1/2 bg-background border-[3px] backdrop-blur flex flex-col items-start justify-between animate-in duration-500",
         collapse ? "w-[13%]" : "w-4/5 gap-3"
       )}
     >

@@ -10,17 +10,23 @@ import {
 import { Button } from "@/components/ui/button";
 import { ListMusic, ListRestart } from "lucide-react";
 import { Playlist } from "@/components/Player/Playlist";
-import React from "react";
+import React, { FC, ReactNode } from "react";
 
-export const CurrentPlaylist = () => {
+interface Props {
+  children?: ReactNode;
+}
+
+export const CurrentPlaylist: FC<Props> = ({ children }) => {
   const playlist = useAppSelector((state) => state.audio.currentPlaylist);
 
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant={"outline"} size={"icon"}>
-          <ListMusic />
-        </Button>
+        {children || (
+          <Button variant={"outline"} size={"icon"}>
+            <ListMusic />
+          </Button>
+        )}
       </SheetTrigger>
       <SheetContent
         side={"bottom"}

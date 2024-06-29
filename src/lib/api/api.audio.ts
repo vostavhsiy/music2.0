@@ -76,13 +76,18 @@ export class AudioApi {
     return res.data;
   }
 
-  static async getPlaylists(page: number, size?: number, search?: string) {
+  static async getPlaylists(
+    page: number,
+    size?: number,
+    search?: string,
+    sortBy?: "popular"
+  ) {
     const res = await instance.get<
       { playlists: IPlaylist[]; total: number } & { message: string }
     >(
       `/playlists/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }`
+      }${sortBy ? `sortBy=${sortBy}&` : ""}`
     );
     return res.data;
   }

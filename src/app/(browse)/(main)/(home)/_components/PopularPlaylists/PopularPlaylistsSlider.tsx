@@ -4,17 +4,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper";
 import { Scrollbar } from "swiper/modules";
 import { ISong } from "@/lib/types/ISong";
-import { PopularSong } from "./PopularSong";
+import { PopularPlaylist } from "./PopularPlaylist";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { useCallback, useRef } from "react";
 import Link from "next/link";
+import { IPlaylist } from "@/lib/types/IPlaylist";
 
 interface Props {
-  songs: ISong[];
+  playlists: IPlaylist[];
 }
 
-export function PopularSongsSlider({ songs }: Props) {
+export function PopularPlaylistsSlider({ playlists }: Props) {
   const sliderRef = useRef<SwiperType>();
   const nextEl = useRef<HTMLButtonElement>(null);
 
@@ -24,15 +25,18 @@ export function PopularSongsSlider({ songs }: Props) {
   }, []);
 
   return (
-    <div>
+    <div className="mt-20">
       <div className="mb-8 text-primary flex justify-between gap-2 items-center">
         <h2 className="text-4xl font-semibold">
           Popular{" "}
           <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
-            songs
+            playlists
           </span>
         </h2>
-        <Link className="text-slate-300 uppercase" href="/songs/1?sortBy=listens">
+        <Link
+          className="text-slate-300 uppercase"
+          href={`/playlists/1?sortBy=popular`}
+        >
           See all
         </Link>
       </div>
@@ -65,10 +69,10 @@ export function PopularSongsSlider({ songs }: Props) {
             },
           }}
         >
-          {songs.map((song) => {
+          {playlists.map((playlist) => {
             return (
-              <SwiperSlide key={song.id}>
-                <PopularSong song={song} playlist={songs} />
+              <SwiperSlide key={playlist.id}>
+                <PopularPlaylist playlist={playlist} />
               </SwiperSlide>
             );
           })}

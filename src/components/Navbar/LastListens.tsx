@@ -1,5 +1,5 @@
 import { ISong } from "@/lib/types/ISong";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -16,15 +16,18 @@ import { ListRestart } from "lucide-react";
 
 interface Props {
   songs: ISong[];
+  children?: ReactNode;
 }
 
-export const LastListens: FC<Props> = ({ songs }) => {
+export const LastListens: FC<Props> = ({ songs, children }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant={"outline"} size={"icon"}>
-          <ListRestart />
-        </Button>
+        {children || (
+          <Button variant={"outline"} size={"icon"}>
+            <ListRestart />
+          </Button>
+        )}
       </SheetTrigger>
       <SheetContent
         side={"bottom"}

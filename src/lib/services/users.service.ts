@@ -24,6 +24,7 @@ export const getUsersPage = async (
   }
 };
 
+
 export const getRecommendedUsers = async () => {
   const { userId } = await auth();
   try {
