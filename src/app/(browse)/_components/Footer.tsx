@@ -31,7 +31,7 @@ export function Footer() {
           <div className="mt-[14px] w-1/2 flex flex-col gap-12">
             <h3 className="font-semibold text-xl">Quick links</h3>
             <div className="grid grid-cols-2 gap-10 underline">
-              <Link href={"/users/1"}>Home</Link>
+              <Link href={"/"}>Home</Link>
               <Link href={"/songs/1"}>Audio</Link>
               <Link href={"/playlists/1"}>Playlists</Link>
               <Link href={"/users/1"}>Community</Link>
@@ -64,7 +64,10 @@ export function Footer() {
               </Link>
             </div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg">
-              The product of <span className="font-bold">Musichub</span>
+              The product of{" "}
+              <span className="font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+                Musichub
+              </span>
             </div>
             <h3 className="text-lg font-semibold">
               © {new Date().getFullYear()} Musichub. All rights reserved
