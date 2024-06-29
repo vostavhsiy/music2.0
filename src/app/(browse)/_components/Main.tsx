@@ -4,6 +4,7 @@ import { Player } from "@/components/Player/Player";
 import { IUser } from "@/lib/types/IUser";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { Footer } from "./Footer";
 
 interface Props {
   children: ReactNode;
@@ -12,9 +13,10 @@ interface Props {
 
 export function Main({ children, profile }: Props) {
   return (
-    <main className={"relative bg-background h-full pb-2 overflow-auto"}>
+    <main className={"relative bg-background h-full pt-3 overflow-auto"}>
       <Navbar profile={profile} />
       {children}
+      <Footer />
       <Player />
     </main>
   );
