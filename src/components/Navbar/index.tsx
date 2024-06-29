@@ -37,7 +37,7 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
       >
         <Link href={"/"} className="hidden lg:flex items-center gap-3">
           <Image
-            src={"/logo.png"}
+            src={"/sidebar-logo.png"}
             alt={"logo"}
             width={500}
             height={500}

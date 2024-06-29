@@ -241,8 +241,6 @@ const TrackDuration: FC<{ player: AudioPlayer }> = ({ player }) => {
   return (
     <div className="flex flex-col gap-4">
       <Slider
-        //@ts-ignore
-        gradient={true}
         value={[time]}
         max={player.player.duration}
         onValueChange={([value]) => {

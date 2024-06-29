@@ -36,6 +36,21 @@ export const getPlaylistPage = async (
   }
 };
 
+export const getPopularSongs = async () => {
+  try {
+    const res = await AudioApi.getSongs(0, 12, undefined, "listens");
+    if (res.message) {
+      console.log(res.message);
+      return null;
+    }
+    return res.songs;
+  } catch (err) {
+    const error = err as Error;
+    console.log(error.message);
+    return null;
+  }
+};
+
 export async function downloadAudio(src: string, title: string) {
   try {
     const file = await AudioApi.getSongFile(src);

@@ -6,13 +6,18 @@ import { delay } from "@/lib/services/users.service";
 import axios from "axios";
 
 export class AudioApi {
-  static async getSongs(page: number, size?: number, search?: string) {
+  static async getSongs(
+    page: number,
+    size?: number,
+    search?: string,
+    sortBy?: "listens"
+  ) {
     const res = await instance.get<
       { songs: ISong[]; total: number } & { message: string }
     >(
       `/songs/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }`
+      }${sortBy ? `sortBy=${sortBy}&` : ""}`
     );
     return res.data;
   }
