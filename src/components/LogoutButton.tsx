@@ -16,12 +16,11 @@ export const LogoutButton: FC<Props> = ({ inNavbar }) => {
     startTransition(() => {
       logout();
     });
-    // await logout();
   };
 
   return (
     <Button
-      variant={inNavbar ? "secondary" : "default"}
+      variant={inNavbar ? "outline" : "default"}
       size={"sm"}
       onClick={clickHandler}
       disabled={isPending}

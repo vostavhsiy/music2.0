@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SearchInput } from "@/components/Navbar/SearchInput";
 import { Navbar } from "./(browse)/_components/Navbar";
+import { Main } from "./(browse)/_components/Main";
+;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,12 +37,9 @@ export default async function RootLayout({
         <Providers>
           <div className="grid grid-cols-[auto+1fr] text-primary h-screen overflow-hidden">
             <Sidebar profile={profile} />
-            <main
-              className="relative bg-background h-full pb-2 overflow-auto">
-              <Navbar profile={profile} />
+            <Main profile={profile}>
               {children}
-              <Player />
-            </main>
+            </Main>
           </div>
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />

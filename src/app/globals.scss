@@ -35,6 +35,10 @@
     --radius: 0.5rem;
   }
 
+  main {
+    @apply bg-gradient-to-b from-slate-50 via-teal-100 to-indigo-200;
+  }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -63,6 +67,14 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+
+    main {
+      background: linear-gradient(
+        180deg,
+        rgba(40, 40, 40, 1) 0%,
+        rgba(25, 20, 20, 1) 100%
+      );
+    }
   }
 }
 
@@ -72,17 +84,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-main {
-  background: linear-gradient(
-    180deg,
-    rgba(40, 40, 40, 1) 0%,
-    rgba(25, 20, 20, 1) 100%
-  );
-  &.light {
-    background: var(--background);
   }
 }
 
