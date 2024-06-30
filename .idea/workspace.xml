@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="">
+    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="fix home page buttons">
+      <change afterPath="$PROJECT_DIR$/public/lines.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/popular-users.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/Buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUser.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUsers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUsers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projests/Next/forum2.0",
+    "last_opened_file_path": "D:/Projests/Next/music2.0/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,6 +61,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projests\Next\music2.0\public" />
       <recent name="D:\Projests\Next\music2.0\src\app\(browse)\(main)\profile\[id]\_components" />
       <recent name="D:\Projests\Next\music2.0\src\app\(browse)\(auth)\registration" />
     </key>
@@ -107,8 +109,17 @@
       <workItem from="1709668886279" duration="2000" />
       <workItem from="1714074339788" duration="12825000" />
       <workItem from="1715329036649" duration="7270000" />
-      <workItem from="1719731906167" duration="2061000" />
+      <workItem from="1719731906167" duration="3494000" />
     </task>
+    <task id="LOCAL-00001" summary="fix home page buttons">
+      <option name="closed" value="true" />
+      <created>1719734008772</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719734008772</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,5 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="fix home page buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix home page buttons" />
   </component>
 </project>

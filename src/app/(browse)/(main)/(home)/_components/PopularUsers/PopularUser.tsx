@@ -14,9 +14,9 @@ export function PopularUser({ user, isLast, isEven }: Props) {
     <Link
       href={`/profile/${user.id}`}
       className={cn(
-        "flex items-center gap-6 transition-colors hover:bg-primary hover:text-background p-3 border-r-4 border-slate-500",
+        "flex items-center gap-6 transition-colors bg-secondary/90 hover:bg-primary hover:text-background hover:underline p-3 border-r-4 border-slate-500",
         isLast && "border-none",
-        isEven && "bg-gradient-to-r from-fuchsia-500 to-pink-500"
+        isEven && "bg-gradient-to-r from-fuchsia-500 to-pink-500",
       )}
     >
       <Image

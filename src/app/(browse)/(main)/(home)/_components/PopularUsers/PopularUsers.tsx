@@ -1,6 +1,8 @@
 import { IUser } from "@/lib/types/IUser";
 import { PopularUser } from "./PopularUser";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import styles from "./popular-users.module.scss";
 
 interface Props {
   users: IUser[];
@@ -21,7 +23,12 @@ export function PopularUsers({ users, title }: Props) {
         )}
       </h2>
       <div className="mx-auto w-[90%] p-1 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500">
-        <div className="w-full grid grid-cols-4 rounded-xl bg-secondary overflow-hidden">
+        <div
+          className={cn(
+            "w-full grid grid-cols-4 rounded-xl bg-secondary overflow-hidden",
+            styles.bg,
+          )}
+        >
           {users.map((user, index) => {
             return (
               <PopularUser

@@ -20,7 +20,7 @@ export const LogoutButton: FC<Props> = ({ inNavbar }) => {
 
   return (
     <Button
-      variant={inNavbar ? "outline" : "default"}
+      variant={inNavbar ? "default" : "default"}
       size={"sm"}
       onClick={clickHandler}
       disabled={isPending}
