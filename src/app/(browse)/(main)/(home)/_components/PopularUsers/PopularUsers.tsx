@@ -20,16 +20,16 @@ export function PopularUsers({ users, title }: Props) {
           </>
         )}
       </h2>
-      <div className="w-full p-1 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500">
-        <div className="w-full flex flex-col rounded-xl bg-secondary overflow-hidden">
+      <div className="mx-auto w-[90%] p-1 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500">
+        <div className="w-full grid grid-cols-4 rounded-xl bg-secondary overflow-hidden">
           {users.map((user, index) => {
             return (
-              <div className="flex flex-col">
-                <PopularUser key={user.id} user={user} />
-                {index < users.length - 1 && (
-                  <div className="w-full h-1 bg-gradient-to-r from-fuchsia-500 to-pink-500"></div>
-                )}
-              </div>
+              <PopularUser
+                isEven={index % 2 === (title ? 0 : 1)}
+                isLast={!!index && index === users.length - 1}
+                key={user.id}
+                user={user}
+              />
             );
           })}
         </div>

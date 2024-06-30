@@ -53,7 +53,7 @@ export default async function Home() {
       )}
             <div
         className={cn(
-          "my-28 grid grid-cols-2 justify-items-center gap-20 mx-auto w-[90%]",
+          "my-20 grid grid-cols-1 justify-items-center gap-20",
           !user && "flex justify-center"
         )}
       >
