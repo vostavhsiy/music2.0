@@ -15,8 +15,7 @@ import Link from "next/link";
 import { SearchInput } from "@/components/Navbar/SearchInput";
 import { Navbar } from "./(browse)/_components/Navbar";
 import { Main } from "./(browse)/_components/Main";
-;
-
+import { redirect } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -37,9 +36,7 @@ export default async function RootLayout({
         <Providers>
           <div className="grid grid-cols-[auto+1fr] text-primary h-screen overflow-hidden">
             <Sidebar profile={profile} />
-            <Main profile={profile}>
-              {children}
-            </Main>
+            <Main profile={profile}>{children}</Main>
           </div>
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />

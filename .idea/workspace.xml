@@ -5,86 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/audio.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/auth.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/search.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(auth)/login/_components/form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(auth)/registration/_components/form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/_components/Sidebar/UserCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/playlist/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/playlists/[page]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/_components/CreatePlaylistForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/_components/CreateSongForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/_components/MyProfile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/_components/Profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/_components/PlaylistCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar/CurrentPlaylist.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar/LastListens.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar/Menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar/SearchInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/InputComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LogoutButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Player/Player.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Player/PlayerButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Player/Playlist.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PlaylistCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Song.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ThemeToggle.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ToastContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/providers/Providers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/providers/ThemeProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/avatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/input.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/menubar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/popover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/sheet.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/slider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/sonner.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/toaster.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/use-toast.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useAppDispatch.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useAppSelector.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/Audio.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/api/api.audio.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/api/api.auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/api/api.users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/api/axios.instances.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/api/websockets/ws.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/convertTime.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/services/audio.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/services/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/services/users.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/types/IListen.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/types/IPlaylist.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/types/ISong.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/types/IUser.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/audio/actionCreators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducers/audio/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/Buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/providers/theme-provider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,24 +40,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projests/courses/Red Winter/jun/client&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Projests/Next/forum2.0",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projests\Next\music2.0\src\app\(browse)\(main)\profile\[id]\_components" />
@@ -183,6 +107,7 @@
       <workItem from="1709668886279" duration="2000" />
       <workItem from="1714074339788" duration="12825000" />
       <workItem from="1715329036649" duration="7270000" />
+      <workItem from="1719731906167" duration="2061000" />
     </task>
     <servers />
   </component>

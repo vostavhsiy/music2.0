@@ -5,12 +5,8 @@ import {
 } from "@/lib/services/audio.service";
 import { PopularSongsSlider } from "./_components/PopularSongs/PopularSongsSlider";
 import { UserPlaylistsSlider } from "./_components/UserPlaylists/UsersPlaylistsSlider";
-import { CurrentPlaylist } from "@/components/Navbar/CurrentPlaylist";
-import { LastListens } from "@/components/Navbar/LastListens";
 import { ISong } from "@/lib/types/ISong";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Contact, ListMusic, ListRestart } from "lucide-react";
 import { PopularPlaylistsSlider } from "./_components/PopularPlaylists/PopularPlaylistsSlider";
 import { getRecommendedUsers } from "@/lib/services/users.service";
 import { PopularUsers } from "./_components/PopularUsers/PopularUsers";
@@ -35,14 +31,14 @@ export default async function Home() {
       return acc.concat([...elem.subscribed.lasts.map((last) => last.song)]);
     }, [] as ISong[]);
 
-  const isButtons = user && !!subscribesLasts?.length;
+  const isRecentlyButton = !!user;
 
   return (
     <div className="w-full p-4">
       <Buttons
         lasts={user?.lasts.map((last) => last.song)}
         subscribesLasts={subscribesLasts}
-        isButtons={!!isButtons}
+        isRecentlyButton={isRecentlyButton}
       />
       {!!popularSongs?.length && <PopularSongsSlider songs={popularSongs} />}
       {user && userPlaylists && (
@@ -51,10 +47,10 @@ export default async function Home() {
       {!!popularPlaylists?.length && (
         <PopularPlaylistsSlider playlists={popularPlaylists} />
       )}
-            <div
+      <div
         className={cn(
           "my-20 grid grid-cols-1 justify-items-center gap-20",
-          !user && "flex justify-center"
+          !user && "flex justify-center",
         )}
       >
         {popularUsers && <PopularUsers users={popularUsers} />}
