@@ -13,7 +13,7 @@ export const ProfileButton: FC<{ user: IUser }> = ({ user }) => {
       }
     >
       <Avatar className={"bg-background"}>
-        <AvatarImage src={user.image || ""} />
+        <AvatarImage src={user.image || "/user.webp"} />
         <AvatarFallback>Profile</AvatarFallback>
       </Avatar>
     </Link>
