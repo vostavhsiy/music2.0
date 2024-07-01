@@ -14,6 +14,8 @@ import { useAppSelector } from "@/hooks/useAppSelector";
 import { downloadAudio } from "@/lib/services/audio.service";
 import { cn } from "@/lib/utils";
 import axios from "axios";
+import Link from "next/link";
+import { getDateInterval } from "@/lib/getDateInterval";
 
 interface Props {
   song: ISong;
@@ -40,26 +42,63 @@ export const Song: FC<Props> = ({
     <div
       className={cn(
         "flex items-center justify-between rounded-xl",
-        inSearch ? "py-1" : "p-2"
+        inSearch ? "py-1" : "p-2",
       )}
     >
       <div className="flex items-center gap-3">
-        <Image
-          src={song.image || "/logo.png"}
-          alt={"user"}
-          width={500}
-          height={500}
-          className={cn(
-            "object-cover object-center rounded-full",
-            inSearch ? "w-[30px] h-[30px]" : "w-[50px] h-[50px]"
-          )}
-        />
+        <PlayerButton song={song} playlist={playlist} />
+        {!inSearch && (
+          <Image
+            src={song.image || "/logo.png"}
+            alt={"user"}
+            width={500}
+            height={500}
+            className={cn(
+              "object-cover object-center rounded aspect-square",
+              inSearch ? "w-[30px]" : "w-[70px]",
+            )}
+          />
+        )}
         <div className={cn("flex flex-col", inSearch ? "gap-0.5" : "gap-2")}>
           <h3>{song.title}</h3>
           <h4 className="text-sm text-zinc-500 font-semibold">{song.author}</h4>
         </div>
       </div>
-      <div className="flex items-center gap-2">
+      <div
+        className={cn(
+          !inSearch && "w-1/2",
+          "flex justify-end items-center gap-2",
+        )}
+      >
+        {!inSearch && (
+          <>
+            <p className={"font-semibold mr-10 text-primary/70"}>
+              {getDateInterval(song.createdAt)}
+            </p>
+            <Link
+              href={`/profile/${song.userid}`}
+              className="w-1/2 flex items-center gap-3"
+            >
+              <div
+                className={cn(
+                  "bg-gradient-to-r from-teal-400 to-yellow-200 p-[2px] rounded-full aspect-square",
+                  inSearch ? "w-[20px]" : "w-[50px]",
+                )}
+              >
+                <Image
+                  src={song.person.image || "/logo.png"}
+                  alt={"user"}
+                  width={500}
+                  height={500}
+                  className={cn(
+                    "bg-secondary object-cover object-center rounded-full w-full h-full",
+                  )}
+                />
+              </div>
+              <h3>{song.person.login}</h3>
+            </Link>
+          </>
+        )}
         {song.file && (
           <Button
             size={"icon"}
@@ -84,7 +123,6 @@ export const Song: FC<Props> = ({
             <Download />
           </Button>
         )}
-        <PlayerButton song={song} playlist={playlist} />
         {isInProfile && (
           <Button
             disabled={isPending}

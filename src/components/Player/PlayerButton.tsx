@@ -24,7 +24,7 @@ export const PlayerButton: FC<Props> = ({ song, playlist }) => {
 
   return (
     <Button
-      variant="secondary"
+      variant="ghost"
       size={"icon"}
       onClick={async () => {
         if (playlist) dispatch(setCurrentPlaylist(playlist));
@@ -41,8 +41,17 @@ export const PlayerButton: FC<Props> = ({ song, playlist }) => {
           }
         }
       }}
+      className="bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-full w-8 h-auto aspect-square "
     >
-      {currentSong?.id === song.id ? pause ? <Play /> : <Pause /> : <Play />}
+      {currentSong?.id === song.id ? (
+        pause ? (
+          <Play className="w-5 aspect-square" />
+        ) : (
+          <Pause className="w-5 aspect-square" />
+        )
+      ) : (
+        <Play className="w-5 aspect-square" />
+      )}
     </Button>
   );
 };
