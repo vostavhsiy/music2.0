@@ -13,7 +13,11 @@ interface Props {
 
 export function Main({ children, profile }: Props) {
   return (
-    <main className={"relative bg-background h-full pt-3 overflow-auto"}>
+    <main
+      className={
+        "max-w-[2560px] w-full mx-auto relative bg-background h-full pt-3 overflow-auto"
+      }
+    >
       <Navbar profile={profile} />
       {children}
       <Footer />

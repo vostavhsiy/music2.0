@@ -1,6 +1,7 @@
 import { IPlaylist } from "@/lib/types/IPlaylist";
 import { ISong } from "@/lib/types/ISong";
 import { IListen } from "@/lib/types/IListen";
+import { INotification } from "@/lib/types/INotification";
 
 export interface IUser {
   id: string;
@@ -13,4 +14,5 @@ export interface IUser {
   lasts: IListen[];
   subscribs: Array<{ subscribed: IUser }>;
   // subscribers Follow[] @relation("subsribe")
+  notifications: INotification[];
 }

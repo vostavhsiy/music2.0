@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="fix home page buttons">
-      <change afterPath="$PROJECT_DIR$/public/lines.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/popular-users.module.scss" afterDir="false" />
+    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="change user list theme on home page">
+      <change afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Notifications.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/types/INotification.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUser.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUsers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularUsers/PopularUsers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularSongs/PopularSongsSlider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/(home)/_components/PopularSongs/PopularSongsSlider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/_components/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/types/IUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/types/IUser.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="HTTP Request" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -41,24 +44,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projests/Next/music2.0/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projests/Next/music2.0/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projests\Next\music2.0\public" />
@@ -109,7 +112,8 @@
       <workItem from="1709668886279" duration="2000" />
       <workItem from="1714074339788" duration="12825000" />
       <workItem from="1715329036649" duration="7270000" />
-      <workItem from="1719731906167" duration="3494000" />
+      <workItem from="1719731906167" duration="4989000" />
+      <workItem from="1719838547053" duration="4304000" />
     </task>
     <task id="LOCAL-00001" summary="fix home page buttons">
       <option name="closed" value="true" />
@@ -119,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719734008772</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="change user list theme on home page">
+      <option name="closed" value="true" />
+      <created>1719735548191</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719735548191</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +140,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fix home page buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix home page buttons" />
+    <MESSAGE value="change user list theme on home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="change user list theme on home page" />
   </component>
 </project>

@@ -6,6 +6,7 @@ import { IUser } from "@/lib/types/IUser";
 import Link from "next/link";
 import React from "react";
 import { NavButtons } from "./NavButtons";
+import { Notifications } from "@/app/(browse)/_components/Notifications";
 
 interface Props {
   profile: IUser | null;
@@ -19,9 +20,21 @@ export function Navbar({ profile }: Props) {
         <SearchInput />
       </div>
       {profile ? (
-        <div className="flex items-center gap-[8px] lg:gap-[15px] ">
-          <LogoutButton inNavbar />
-          <ProfileButton user={profile} />
+        <div className="flex items-stretch gap-[8px] lg:gap-[15px] ">
+          <div
+            className={
+              "flex items-center gap-3 py-1 pl-1 pr-6 bg-background rounded-3xl"
+            }
+          >
+            <ProfileButton user={profile} />
+            <Link
+              className={"font-semibold hover:underline"}
+              href={`/profile/${profile.id}`}
+            >
+              {profile.login}
+            </Link>
+          </div>
+          <Notifications notifications={profile.notifications} />
         </div>
       ) : (
         <Button variant={"secondary"}>
