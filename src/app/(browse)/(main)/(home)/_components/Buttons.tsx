@@ -26,7 +26,7 @@ export default function Buttons({
   return (
     <div
       className={cn(
-        "grid grid-cols-3 items-center mb-10 gap-20 justify-center text-white",
+        "max-w-[1400px] mx-auto grid grid-cols-3 items-center mb-10 gap-20 justify-center text-white",
         !isRecentlyButton && "flex",
       )}
     >

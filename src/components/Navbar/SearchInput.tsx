@@ -85,7 +85,9 @@ export const SearchInput: FC<Props> = ({ className }) => {
         >
           <Button
             variant="outline"
-            className={"w-full flex items-center gap-4"}
+            className={
+              "w-full flex items-center gap-4 bg-white text-black hover:bg-white/80 hover:text-black"
+            }
           >
             <span className={"hidden lg:block"}>
               Search for songs, playlists, etc.
