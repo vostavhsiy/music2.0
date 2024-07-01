@@ -26,7 +26,6 @@ const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
 
   return (
     <div>
-      <h1 className="text-lg font-semibold mb-5">Playlists</h1>
       <div className="grid grid-cols-4 gap-5">
         {playlists.map((playlist) => {
           return <PlaylistCard key={playlist.id} playlist={playlist} />;
