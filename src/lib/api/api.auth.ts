@@ -17,6 +17,28 @@ export class AuthApi {
     >(`/login`, payload);
     return res.data;
   }
+
+  static async edit(
+    payload: { login?: string; password?: string },
+    accessToken: string,
+  ) {
+    const res = await instance.put<IUser>(`/edit`, payload, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+    return res.data;
+  }
+
+  static async editImage(payload: FormData, accessToken: string) {
+    const res = await instance.patch<IUser>(`/edit-image`, payload, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+    return res.data;
+  }
+
   static async logout() {
     const res = await instance.post(`/logout`);
     return res.data;

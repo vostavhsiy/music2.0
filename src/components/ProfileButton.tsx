@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export const ProfileButton: FC<{ user: IUser }> = ({ user }) => {
   return (
     <Link
-      href={`/profile/${user.id}`}
+      href={`/dashboard`}
       className={
         "rounded-full p-[2px] bg-gradient-to-r from-teal-400 to-yellow-200"
       }

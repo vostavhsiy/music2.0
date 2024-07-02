@@ -36,6 +36,42 @@ export const login = async (payload: { login: string; password: string }) => {
   }
 };
 
+export const edit = async (payload: { login: string; password: string }) => {
+  const accessToken = await getAccessToken();
+  if (!accessToken) return false;
+  try {
+    const user = await AuthApi.edit(payload, accessToken);
+    revalidatePath("/", "page");
+    revalidatePath("/dashboard", "page");
+    revalidatePath("/dashboard/audio", "page");
+    revalidatePath("/dashboard/playlists", "page");
+    revalidatePath("/dashboard/follows", "page");
+    return user;
+  } catch (err) {
+    const error = err as Error;
+    console.log(error.message);
+    return false;
+  }
+};
+
+export const editImage = async (payload: FormData) => {
+  const accessToken = await getAccessToken();
+  if (!accessToken) return false;
+  try {
+    const user = await AuthApi.editImage(payload, accessToken);
+    revalidatePath("/", "page");
+    revalidatePath("/dashboard", "page");
+    revalidatePath("/dashboard/audio", "page");
+    revalidatePath("/dashboard/playlists", "page");
+    revalidatePath("/dashboard/follows", "page");
+    return user;
+  } catch (err) {
+    const error = err as Error;
+    console.log(error.message);
+    return false;
+  }
+};
+
 export const logout = async () => {
   try {
     cookies().delete("accessToken");

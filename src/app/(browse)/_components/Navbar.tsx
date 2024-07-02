@@ -29,7 +29,7 @@ export function Navbar({ profile }: Props) {
             <ProfileButton user={profile} />
             <Link
               className={"font-semibold hover:underline"}
-              href={`/profile/${profile.id}`}
+              href={`/dashboard`}
             >
               {profile.login}
             </Link>
