@@ -10,7 +10,9 @@ interface Props {
   profile: IUser | null;
 }
 
-export const socket = io("http://localhost:5001");
+export const socket = io(
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001",
+);
 
 export const ToastContainer: FC<Props> = ({ profile }) => {
   useEffect(() => {
