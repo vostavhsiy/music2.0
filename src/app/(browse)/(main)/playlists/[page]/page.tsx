@@ -18,7 +18,7 @@ interface Props {
 const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
   const { playlists, total } = await AudioApi.getPlaylists(
     +params.page - 1,
-    Number(searchParams.size) || 8,
+    Number(searchParams.size) || 12,
     searchParams.search,
     searchParams.sortBy,
   );
@@ -42,7 +42,7 @@ const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
           }
         />
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-5 max-w-[1600px] mx-auto">
         {playlists.map((playlist) => {
           return <PlaylistCard key={playlist.id} playlist={playlist} />;
         })}

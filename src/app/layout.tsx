@@ -40,6 +40,7 @@ export default async function RootLayout({
           </div>
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />
+          <Player />
         </Providers>
       </body>
     </html>

@@ -13,7 +13,10 @@ export class UsersApi {
     sortBy?: UsersSortType,
   ) {
     const res = await instance.get<
-      { users: IUser[]; total: number } & { message: string }
+      {
+        users: Array<IUser & { _count: { subscribers: number } }>;
+        total: number;
+      } & { message: string }
     >(
       `/users/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""

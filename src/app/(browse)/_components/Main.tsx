@@ -13,15 +13,16 @@ interface Props {
 
 export function Main({ children, profile }: Props) {
   return (
-    <main
-      className={
-        "max-w-[2560px] w-full mx-auto relative bg-background h-full pt-3 overflow-auto"
-      }
-    >
-      <Navbar profile={profile} />
-      {children}
-      <Footer />
-      <Player />
-    </main>
+    <>
+      <main
+        className={
+          "max-w-[2560px] grid grid-rows-[auto_1fr_auto] w-full mx-auto relative bg-background h-full pt-3 overflow-auto"
+        }
+      >
+        <Navbar profile={profile} />
+        <div className={"w-full h-full min-w-0"}>{children}</div>
+        <Footer />
+      </main>
+    </>
   );
 }

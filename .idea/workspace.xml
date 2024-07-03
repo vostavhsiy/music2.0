@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="add profile edit">
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/_components/Sort.tsx" afterDir="false" />
+    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="add sorting to songs, playlists, users">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/_components/Sort.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/_components/Sort.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/playlist/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/playlist/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/playlists/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/playlists/[page]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/_components/PlaylistCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/_components/PlaylistCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/_components/UserCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/_components/UserCard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/api.audio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/api.audio.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/_components/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/_components/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/api/api.users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/api.users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/services/audio.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/services/audio.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/services/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +121,7 @@
       <workItem from="1719731906167" duration="4989000" />
       <workItem from="1719838547053" duration="8268000" />
       <workItem from="1719929752500" duration="8320000" />
-      <workItem from="1719994883900" duration="3792000" />
+      <workItem from="1719994883900" duration="10675000" />
     </task>
     <task id="LOCAL-00001" summary="fix home page buttons">
       <option name="closed" value="true" />
@@ -193,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719939121324</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add sorting to songs, playlists, users">
+      <option name="closed" value="true" />
+      <created>1719999101344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719999101344</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +232,7 @@
     <MESSAGE value="add margin to layout" />
     <MESSAGE value="remove heading from playlists page" />
     <MESSAGE value="add profile edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="add profile edit" />
+    <MESSAGE value="add sorting to songs, playlists, users" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sorting to songs, playlists, users" />
   </component>
 </project>

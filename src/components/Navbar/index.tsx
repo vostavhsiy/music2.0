@@ -32,7 +32,7 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
       <div
         className={cn(
           "flex flex-col items-start gap-12 w-full",
-          collapse && "items-center"
+          collapse && "items-center",
         )}
       >
         <Link href={"/"} className="hidden lg:flex items-center gap-3">
@@ -43,13 +43,13 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
             height={500}
             className={cn(
               "w-[30px] h-[30px] object-cover object-center transition-all",
-              collapse && "w-[40px] h-[40px]"
+              collapse && "w-[40px] h-[40px]",
             )}
           />
           <h1
             className={cn(
               "text-2xl font-bold hidden lg:block",
-              collapse && "!hidden"
+              collapse && "!hidden",
             )}
           >
             {" "}
@@ -60,7 +60,7 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
           className={cn(
             "fixed top-0 -left-full transition-all ease-out duration-1000 bg-accent w-full h-full flex-col justify-center lg:static  lg:justify-start lg:bg-transparent flex items-start gap-10 text-base text-primary font-semibold",
             burger && "left-0",
-            collapse && "items-center"
+            collapse && "items-center",
           )}
         >
           <SearchInput className={"sm:hidden h-auto"} />
@@ -68,7 +68,7 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
             href={"/songs/1"}
             className={cn(
               "hover:text-destructive transition-all flex items-center gap-2",
-              collapse && "gap-0"
+              collapse && "gap-0",
             )}
             onClick={() => setBurger(false)}
           >
@@ -76,26 +76,26 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
             <span className={cn(collapse && "hidden")}>Audio</span>
           </Link>
           <Link
-            href={"/playlists/1"}
-            className={cn(
-              "hover:text-destructive transition-all flex items-center gap-2",
-              collapse && "gap-0"
-            )}
-            onClick={() => setBurger(false)}
-          >
-            <ListMusic />
-            <span className={cn(collapse && "hidden")}>Playlists</span>
-          </Link>
-          <Link
             href={"/users/1"}
             className={cn(
               "hover:text-destructive transition-all flex items-center gap-2",
-              collapse && "gap-0"
+              collapse && "gap-0",
             )}
             onClick={() => setBurger(false)}
           >
             <Users />
             <span className={cn(collapse && "hidden")}>Community</span>
+          </Link>
+          <Link
+            href={"/playlists/1"}
+            className={cn(
+              "hover:text-destructive transition-all flex items-center gap-2",
+              collapse && "gap-0",
+            )}
+            onClick={() => setBurger(false)}
+          >
+            <ListMusic />
+            <span className={cn(collapse && "hidden")}>Playlists</span>
           </Link>
         </nav>
       </div>
@@ -121,7 +121,7 @@ export const Navbar: FC<Props> = ({ user, collapse }) => {
         <div
           className={cn(
             "w-full flex flex-col lg:flex-row items-center gap-[10px] lg:gap-[20px] justify-between",
-            collapse && "!flex-col"
+            collapse && "!flex-col",
           )}
         >
           <ThemeToggle collapse={!user} />

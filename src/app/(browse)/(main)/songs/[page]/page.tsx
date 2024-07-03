@@ -7,6 +7,7 @@ import { Playlist } from "@/components/Player/Playlist";
 import { redirect } from "next/navigation";
 import { Sort } from "@/app/(browse)/(main)/_components/Sort";
 import { SongSortType } from "@/lib/api/api.audio";
+import React from "react";
 
 const SongsPage = async ({
   params,
@@ -45,7 +46,24 @@ const SongsPage = async ({
           }
         />
       </div>
-
+      <div>
+        <div
+          className={
+            "grid grid-cols-[50px_1fr_50%] text-primary/40 uppercase text-sm font-semibold"
+          }
+        >
+          <div></div>
+          <div>Title</div>
+          <div className={"flex justify-end items-center gap-2"}>
+            <div className="mr-10">date added</div>
+            <div className="w-1/2">added by</div>
+            <div className="w-[40px]"></div>
+          </div>
+        </div>
+        <div
+          className={"ml-[50px] h-[2px] bg-primary/30 rounded-xl mt-3"}
+        ></div>
+      </div>
       <div>
         <Playlist songs={res.songs} isInProfile={false} />
       </div>

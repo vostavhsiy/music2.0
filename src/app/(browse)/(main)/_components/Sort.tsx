@@ -55,9 +55,8 @@ export const Sort: FC<Props> = ({ items, defaultValue }) => {
           <CommandList>
             <CommandGroup>
               {items.map((item) => (
-                <Link href={item.value}>
+                <Link key={item.value} href={item.value}>
                   <CommandItem
-                    key={item.value}
                     value={item.value}
                     onSelect={(currentValue) => {
                       // setValue(currentValue === value ? "" : currentValue);

@@ -6,9 +6,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { follow, unfollow } from "@/lib/services/users.service";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface Props {
-  user: IUser;
+  user: IUser & { _count: { subscribers: number } };
   isAuth: string | undefined;
   isFollow: boolean;
   currentPage: number;
@@ -39,38 +40,60 @@ export const UserCard: FC<Props> = ({
   };
 
   return (
-    <div className={"flex flex-col gap-3 items-center p-4 rounded-[10px] "}>
-      <Image
-        src={user.image || "/user.webp"}
-        alt={"image"}
-        width={500}
-        height={600}
-        className="w-[100px] h-[100px] object-cover object-center rounded-[10px]"
-      />
-      <div className="flex flex-col items-center gap-2 w-full">
-        <Link
-          href={`/profile/${user.id}`}
-          className="text-center hover:underline transition-all w-full"
-        >
-          {user.login}
-        </Link>
-        {isAuth && isAuth !== user.id && (
-          <Button
-            variant="secondary"
-            className="w-1/2"
-            size="sm"
-            disabled={isPending}
-            onClick={clickHandler}
+    <div
+      className={cn(
+        "grid grid-cols-[2fr_repeat(4,1fr)]",
+        !isAuth && "grid-cols-[2fr_repeat(3,1fr)]",
+      )}
+    >
+      <div className={"flex gap-6 items-center p-4 rounded-[10px] "}>
+        <div className="w-[80px] aspect-square rounded-lg p-[2px] bg-gradient-to-r from-amber-500 to-pink-500">
+          <Image
+            src={user.image || "/user.webp"}
+            alt={"image"}
+            width={500}
+            height={600}
+            className="w-full h-full bg-secondary object-cover object-center rounded-lg"
+          />
+        </div>
+        <div className="flex flex-col items-center gap-2">
+          <Link
+            href={`/profile/${user.id}`}
+            className="hover:underline transition-all w-full text-lg"
           >
-            {isFollow ? "Unfollow" : "Follow"}
-          </Button>
-        )}
-        {isAuth && isAuth === user.id && (
-          <Button className="w-1/2" variant="secondary" size="sm">
-            It's you
-          </Button>
-        )}
+            {user.login}
+          </Link>
+        </div>
       </div>
+      <div className={"flex items-center text-lg"}>
+        {user._count.subscribers} subs
+      </div>
+      <div className={"flex items-center text-lg"}>
+        {user.songs.length} songs
+      </div>
+      <div className={"flex items-center text-lg"}>
+        {user.playlists.length} playlists
+      </div>
+      {isAuth && (
+        <div className={"flex items-center"}>
+          {isAuth !== user.id && (
+            <Button
+              variant="secondary"
+              className="w-1/2"
+              size="sm"
+              disabled={isPending}
+              onClick={clickHandler}
+            >
+              {isFollow ? "Unfollow" : "Follow"}
+            </Button>
+          )}
+          {isAuth === user.id && (
+            <Button className="w-1/2" variant="secondary" size="sm">
+              It's you
+            </Button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
