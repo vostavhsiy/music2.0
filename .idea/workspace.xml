@@ -4,26 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="remove heading from playlists page">
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/_components/CreatePlaylistForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/_components/CreateSongForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/_components/DashboardSidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/_components/EditProfile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/_components/ProfileImage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/audio/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/dashboard.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/follows/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/dashboard/playlists/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/getBase64.ts" afterDir="false" />
+    <list default="true" id="e5a8e0dd-d420-46fa-a8ee-76fbdc8339e4" name="Changes" comment="add profile edit">
+      <change afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/_components/Sort.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/auth.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/auth.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/profile/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/api/api.auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/api.auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/playlists/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/playlists/[page]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/songs/[page]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(browse)/(main)/users/[page]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/api.audio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/api.audio.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/api/api.users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/api/api.users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/services/audio.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/services/audio.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/services/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/services/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,24 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projests/Next/music2.0/src/app/(browse)/(main)/dashboard/_components",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projests/Next/music2.0/src/app/(browse)/(main)/dashboard/_components&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\1234\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Projests\\Next\\music2.0\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projests\Next\music2.0\src\app\(browse)\(main)\dashboard\_components" />
@@ -127,7 +118,8 @@
       <workItem from="1715329036649" duration="7270000" />
       <workItem from="1719731906167" duration="4989000" />
       <workItem from="1719838547053" duration="8268000" />
-      <workItem from="1719929752500" duration="7997000" />
+      <workItem from="1719929752500" duration="8320000" />
+      <workItem from="1719994883900" duration="3792000" />
     </task>
     <task id="LOCAL-00001" summary="fix home page buttons">
       <option name="closed" value="true" />
@@ -193,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719850211767</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add profile edit">
+      <option name="closed" value="true" />
+      <created>1719939121324</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719939121324</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +221,7 @@
     <MESSAGE value="change style of Song.ts" />
     <MESSAGE value="add margin to layout" />
     <MESSAGE value="remove heading from playlists page" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove heading from playlists page" />
+    <MESSAGE value="add profile edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="add profile edit" />
   </component>
 </project>

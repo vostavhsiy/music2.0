@@ -2,19 +2,24 @@ import instance from "@/lib/api/axios.instances";
 import { IUser } from "@/lib/types/IUser";
 import { ISong } from "@/lib/types/ISong";
 
+export type UsersSortType = "popular" | "name-asc" | "name-desc";
+
 export class UsersApi {
   static async getUsers(
     page: number,
     search?: string,
     size?: number,
     recommended?: boolean,
+    sortBy?: UsersSortType,
   ) {
     const res = await instance.get<
       { users: IUser[]; total: number } & { message: string }
     >(
       `/users/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }${recommended ? `recommended=${recommended}&` : ""}`,
+      }${recommended ? `recommended=${recommended}&` : ""}${
+        sortBy ? `sortBy=${sortBy}&` : ""
+      }`,
     );
 
     return res.data;

@@ -5,19 +5,22 @@ import { IPlaylist } from "@/lib/types/IPlaylist";
 import { delay } from "@/lib/services/users.service";
 import axios from "axios";
 
+export type SongSortType = "listens" | "old" | "new" | "name";
+export type PlaylistsSortType = "popular" | "old" | "new" | "name";
+
 export class AudioApi {
   static async getSongs(
     page: number,
     size?: number,
     search?: string,
-    sortBy?: "listens"
+    sortBy?: SongSortType,
   ) {
     const res = await instance.get<
       { songs: ISong[]; total: number } & { message: string }
     >(
       `/songs/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }${sortBy ? `sortBy=${sortBy}&` : ""}`
+      }${sortBy ? `sortBy=${sortBy}&` : ""}`,
     );
     return res.data;
   }
@@ -31,7 +34,7 @@ export class AudioApi {
           author: string;
         }
       | FormData,
-    accessToken: string
+    accessToken: string,
   ) {
     const res = await instance.post<ISong & { message: string }>(
       `/songs`,
@@ -40,14 +43,14 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      }
+      },
     );
     return res.data;
   }
 
   static async deleteSong(
     { id, imageEtc }: { id: string; imageEtc?: string },
-    accessToken: string
+    accessToken: string,
   ) {
     const res = await instance.delete<
       { song: ISong; id: string } & { message: string }
@@ -80,28 +83,28 @@ export class AudioApi {
     page: number,
     size?: number,
     search?: string,
-    sortBy?: "popular"
+    sortBy?: PlaylistsSortType,
   ) {
     const res = await instance.get<
       { playlists: IPlaylist[]; total: number } & { message: string }
     >(
       `/playlists/${page}?${size ? `size=${size}&` : ""}${
         search ? `search=${search}&` : ""
-      }${sortBy ? `sortBy=${sortBy}&` : ""}`
+      }${sortBy ? `sortBy=${sortBy}&` : ""}`,
     );
     return res.data;
   }
 
   static async getPlaylist(id: string) {
     const res = await instance.get<IPlaylist & { message: string }>(
-      `/playlist/${id}`
+      `/playlist/${id}`,
     );
 
     return res.data;
   }
   static async createPlaylist(
     payload: { title: string; songs: Array<{ id: string }> } | FormData,
-    accessToken: string
+    accessToken: string,
   ) {
     const res = await instance.post<IPlaylist & { message: string }>(
       "/playlists",
@@ -110,7 +113,7 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      }
+      },
     );
     return res.data;
   }
@@ -118,7 +121,7 @@ export class AudioApi {
   static async deletePlaylist(
     id: string,
     imageEtc: string,
-    accessToken: string
+    accessToken: string,
   ) {
     const res = await instance.delete<
       { playlist: IPlaylist; id: string } & { message: string }
@@ -145,7 +148,7 @@ export class AudioApi {
   static async addListenToSong(
     songId: string,
     userId: string,
-    accessToken: string
+    accessToken: string,
   ) {
     const res = await instance.patch<{ song: ISong }>(
       `/song/${songId}/listen/${userId}`,
@@ -154,7 +157,7 @@ export class AudioApi {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
-      }
+      },
     );
     return res.data;
   }

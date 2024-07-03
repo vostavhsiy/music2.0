@@ -1,6 +1,6 @@
 "use server";
 
-import { UsersApi } from "@/lib/api/api.users";
+import { UsersApi, UsersSortType } from "@/lib/api/api.users";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { getAccessToken } from "@/actions/auth.actions";
@@ -9,10 +9,11 @@ import { auth } from "@/lib/services/auth.service";
 export const getUsersPage = async (
   page?: number,
   search?: string,
-  size?: number
+  size?: number,
+  sortBy?: UsersSortType,
 ) => {
   try {
-    const res = await UsersApi.getUsers(page || 0, search, size);
+    const res = await UsersApi.getUsers(page || 0, search, size, false, sortBy);
     if (res.message) {
       return null;
     }
@@ -23,7 +24,6 @@ export const getUsersPage = async (
     return null;
   }
 };
-
 
 export const getRecommendedUsers = async () => {
   const { userId } = await auth();

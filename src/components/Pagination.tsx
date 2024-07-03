@@ -7,9 +7,16 @@ interface Props {
   size: number;
   total: number;
   baseLink: string;
+  params?: string;
 }
 
-export const Pagination: FC<Props> = ({ page, size, total, baseLink }) => {
+export const Pagination: FC<Props> = ({
+  page,
+  size,
+  total,
+  baseLink,
+  params,
+}) => {
   return (
     <div className="flex items-center gap-4 w-full justify-end mt-[30px]">
       <h3>
@@ -20,7 +27,7 @@ export const Pagination: FC<Props> = ({ page, size, total, baseLink }) => {
           {page <= 1 ? (
             "Back"
           ) : (
-            <Link href={`${baseLink}/${page - 1}`}>Back</Link>
+            <Link href={`${baseLink}/${page - 1}?${params}`}>Back</Link>
           )}
         </Button>
         <Button
@@ -30,7 +37,7 @@ export const Pagination: FC<Props> = ({ page, size, total, baseLink }) => {
           {page >= Math.ceil(total / size) ? (
             "Forward"
           ) : (
-            <Link href={`${baseLink}/${page + 1}`}>Forward</Link>
+            <Link href={`${baseLink}/${page + 1}?${params}`}>Forward</Link>
           )}
         </Button>
       </div>

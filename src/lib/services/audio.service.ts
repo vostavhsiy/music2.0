@@ -1,12 +1,13 @@
-import { AudioApi } from "@/lib/api/api.audio";
+import { AudioApi, SongSortType } from "@/lib/api/api.audio";
 
 export const getSongsPage = async (
   page?: number,
   search?: string,
-  size?: number
+  size?: number,
+  sortBy?: SongSortType,
 ) => {
   try {
-    const res = await AudioApi.getSongs(page || 0, size, search);
+    const res = await AudioApi.getSongs(page || 0, size, search, sortBy);
     if (res.message) {
       return null;
     }
@@ -21,7 +22,7 @@ export const getSongsPage = async (
 export const getPlaylistPage = async (
   page?: number,
   search?: string,
-  size?: number
+  size?: number,
 ) => {
   try {
     const res = await AudioApi.getPlaylists(page || 0, size, search);
