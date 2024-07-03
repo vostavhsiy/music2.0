@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const links = [
   {
     href: "/dashboard",
-    label: "Main",
+    label: "General",
   },
   {
     href: "/dashboard/audio",
@@ -27,15 +27,15 @@ export const DashboardSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex flex-col gap-8 p-3 rounded-xl bg-background">
+    <div className="w-full flex flex-col items-center gap-8 p-3 rounded-xl bg-background">
       {links.map((link) => {
         return (
           <Link
             key={link.href}
             className={cn(
-              "text-lg p-4 font-semibold rounded-lg",
+              "w-full text-center hover:underline text-lg p-4 font-semibold rounded-lg",
               pathname === link.href &&
-                "bg-gradient-to-r from-rose-400 to-red-500 text-white",
+                "bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white",
             )}
             href={link.href}
           >

@@ -118,6 +118,23 @@ export class AudioApi {
     return res.data;
   }
 
+  static async editPlaylist(
+    id: string,
+    payload: { title: string; songs: Array<{ id: string }> } | FormData,
+    accessToken: string,
+  ) {
+    const res = await instance.put<IPlaylist & { message: string }>(
+      `/playlist/${id}`,
+      payload,
+      {
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      },
+    );
+    return res.data;
+  }
+
   static async deletePlaylist(
     id: string,
     imageEtc: string,

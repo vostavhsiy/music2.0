@@ -17,7 +17,7 @@ export const deleteSong = async (id: string, imageEtc?: string) => {
       console.log(res.message);
       return false;
     }
-    revalidatePath("/profile/[id]", "page");
+    revalidatePath("/dashboard", "page");
     revalidatePath("/songs/[page]", "page");
     return res as { song: ISong; id: string };
   } catch (e) {
@@ -37,7 +37,7 @@ export const createSong = async (data: FormData) => {
       console.log(res.message);
       return false;
     }
-    revalidatePath("/profile/[id]", "page");
+    revalidatePath("/dashboard", "page");
     revalidatePath("/songs/[page]", "page");
     return res as ISong;
   } catch (e) {
@@ -53,7 +53,7 @@ export const createPlaylist = async (
         title: string;
         songs: Array<{ id: string }>;
       }
-    | FormData
+    | FormData,
 ) => {
   const user = await currentUser();
   const accessToken = await getAccessToken();
@@ -64,7 +64,35 @@ export const createPlaylist = async (
       console.log(res.message);
       return false;
     }
-    revalidatePath("/profile/[id]", "page");
+    revalidatePath("/dashboard", "page");
+    revalidatePath("/playlists/[page]", "page");
+    return res as IPlaylist;
+  } catch (e) {
+    const err = e as Error;
+    console.log(err.message);
+    return false;
+  }
+};
+
+export const editPlaylist = async (
+  id: string,
+  data:
+    | {
+        title: string;
+        songs: Array<{ id: string }>;
+      }
+    | FormData,
+) => {
+  const user = await currentUser();
+  const accessToken = await getAccessToken();
+  if (!user || !accessToken) return false;
+  try {
+    const res = await AudioApi.editPlaylist(id, data, accessToken);
+    if (res.message) {
+      console.log(res.message);
+      return false;
+    }
+    revalidatePath("/dashboard", "page");
     revalidatePath("/playlists/[page]", "page");
     return res as IPlaylist;
   } catch (e) {
@@ -75,7 +103,7 @@ export const createPlaylist = async (
 };
 
 export const deletePlaylist = async (id: string, imageEtc: string) => {
-    const user = await currentUser();
+  const user = await currentUser();
   const accessToken = await getAccessToken();
   if (!user || !accessToken) return false;
   try {
@@ -84,7 +112,7 @@ export const deletePlaylist = async (id: string, imageEtc: string) => {
       console.log(res.message);
       return false;
     }
-    revalidatePath("/profile/[id]", "page");
+    revalidatePath("/dashboard", "page");
     revalidatePath("/playlists/[page]", "page");
     return res;
   } catch (e) {
@@ -100,7 +128,7 @@ export const addListenToSong = async (songId: string) => {
   if (!user || !accessToken) return false;
   try {
     const res = await AudioApi.addListenToSong(songId, user.id, accessToken);
-    revalidatePath("/profile/[id]", "page");
+    revalidatePath("/dashboard", "page");
     revalidatePath("/songs/[page]", "page");
     revalidatePath("/playlists/[page]", "page");
     return res;

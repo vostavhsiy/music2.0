@@ -6,9 +6,19 @@ interface Props {
   songs: ISong[];
   isInProfile?: boolean;
   inCreateMode?: boolean;
+  inEditMode?: boolean;
+  select?: (id: string) => void;
+  pickedSongs?: string[];
 }
 
-export const Playlist: FC<Props> = ({ songs, isInProfile, inCreateMode }) => {
+export const Playlist: FC<Props> = ({
+  songs,
+  isInProfile,
+  inCreateMode,
+  inEditMode,
+  select,
+  pickedSongs,
+}) => {
   return (
     <div className="flex flex-col gap-5">
       {songs.map((song) => {
@@ -19,6 +29,9 @@ export const Playlist: FC<Props> = ({ songs, isInProfile, inCreateMode }) => {
             isInProfile={isInProfile}
             playlist={songs}
             inCreateMode={inCreateMode}
+            inEditMode={inEditMode}
+            select={select}
+            isEditPicked={!!pickedSongs?.includes(song.id)}
           />
         );
       })}

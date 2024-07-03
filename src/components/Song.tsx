@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useTransition } from "react";
+import { FC, useState, useTransition } from "react";
 import { ISong } from "@/lib/types/ISong";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,10 @@ interface Props {
   playlist?: ISong[];
   isInProfile?: boolean;
   inCreateMode?: boolean;
+  inEditMode?: boolean;
   inSearch?: boolean;
+  select?: (id: string) => void;
+  isEditPicked?: boolean;
 }
 
 export const Song: FC<Props> = ({
@@ -30,11 +33,15 @@ export const Song: FC<Props> = ({
   isInProfile,
   playlist,
   inCreateMode,
+  inEditMode,
   inSearch,
+  select,
+  isEditPicked,
 }) => {
   const dispatch = useAppDispatch();
 
   const [isPending, startTransition] = useTransition();
+  const [downloadPending, setDownloadPending] = useState(false);
 
   const pickedSongs = useAppSelector((state) => state.audio.pickedSongs);
 
@@ -75,36 +82,39 @@ export const Song: FC<Props> = ({
             <p className={"font-semibold mr-10 text-primary/70"}>
               {getDateInterval(song.createdAt)}
             </p>
-            <Link
-              href={`/profile/${song.userid}`}
-              className="w-1/2 flex items-center gap-3"
-            >
-              <div
-                className={cn(
-                  "bg-gradient-to-r from-teal-400 to-yellow-200 p-[2px] rounded-full aspect-square",
-                  inSearch ? "w-[20px]" : "w-[50px]",
-                )}
+            {!isInProfile && (
+              <Link
+                href={`/profile/${song.userid}`}
+                className="w-1/2 flex items-center gap-3"
               >
-                <Image
-                  src={song.person.image || "/logo.png"}
-                  alt={"user"}
-                  width={500}
-                  height={500}
+                <div
                   className={cn(
-                    "bg-secondary object-cover object-center rounded-full w-full h-full",
+                    "bg-gradient-to-r from-teal-400 to-yellow-200 p-[2px] rounded-full aspect-square",
+                    inSearch ? "w-[20px]" : "w-[50px]",
                   )}
-                />
-              </div>
-              <h3>{song.person.login}</h3>
-            </Link>
+                >
+                  <Image
+                    src={song.person.image || "/logo.png"}
+                    alt={"user"}
+                    width={500}
+                    height={500}
+                    className={cn(
+                      "bg-secondary object-cover object-center rounded-full w-full h-full",
+                    )}
+                  />
+                </div>
+                <h3>{song.person.login}</h3>
+              </Link>
+            )}
           </>
         )}
         {song.file && (
           <Button
             size={"icon"}
             variant={"ghost"}
-            disabled={isPending}
+            disabled={isPending || downloadPending}
             onClick={() => {
+              setDownloadPending(true);
               startTransition(() => {
                 downloadAudio(song.file, song.title + ".mp3")
                   .then((file) => {
@@ -116,6 +126,9 @@ export const Song: FC<Props> = ({
                   .catch((reason) => {
                     const e = reason as Error;
                     toast.error(reason.message);
+                  })
+                  .finally(() => {
+                    setDownloadPending(false);
                   });
               });
             }}
@@ -153,6 +166,20 @@ export const Song: FC<Props> = ({
             }}
           >
             {!pickedSongs.includes(song.id) ? <Plus /> : <X />}
+          </Button>
+        )}
+        {inEditMode && (
+          <Button
+            disabled={isPending}
+            variant={isEditPicked ? "outline" : "destructive"}
+            size={"icon"}
+            onClick={async () => {
+              startTransition(() => {
+                select && select(song.id);
+              });
+            }}
+          >
+            {!isEditPicked ? <Plus /> : <X />}
           </Button>
         )}
       </div>

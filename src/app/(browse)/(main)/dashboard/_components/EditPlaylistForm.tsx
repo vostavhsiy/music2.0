@@ -1,16 +1,20 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { FC, useEffect, useRef, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
-import { createPlaylist, createSong } from "@/actions/audio.actions";
+import {
+  createPlaylist,
+  createSong,
+  editPlaylist,
+} from "@/actions/audio.actions";
 import { toast } from "sonner";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { getSongs } from "@/store/reducers/audio/actionCreators";
-import { setPickedSongs, setSelectPage } from "@/store/reducers/audio/reducer";
+import { setSelectPage } from "@/store/reducers/audio/reducer";
 import { Playlist } from "@/components/Player/Playlist";
-import { StepBack, StepForward, X, XCircleIcon } from "lucide-react";
+import { Pencil, StepBack, StepForward, X, XCircleIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -19,9 +23,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { IPlaylist } from "@/lib/types/IPlaylist";
 
-export const CreatePlaylistForm = () => {
+interface Props {
+  playlist: IPlaylist;
+}
+
+export const EditPlaylistForm: FC<Props> = ({ playlist }) => {
   const dispatch = useAppDispatch();
+
+  const [open, setOpen] = useState(false);
 
   const form = useRef<HTMLFormElement>(null);
   const searchForm = useRef<HTMLFormElement>(null);
@@ -30,7 +41,9 @@ export const CreatePlaylistForm = () => {
 
   const [isPending, startTransition] = useTransition();
 
-  const pickedSongs = useAppSelector((state) => state.audio.pickedSongs);
+  const [pickedSongs, setPickedSongs] = useState<string[]>(
+    playlist.songs.map((song) => song.id),
+  );
   const page = useAppSelector((state) => state.audio.selectPage);
   const songs = useAppSelector((state) => state.audio.selectSearchSongs);
   const total = useAppSelector((state) => state.audio.selectSearchSongsCount);
@@ -49,12 +62,13 @@ export const CreatePlaylistForm = () => {
     }
     data.set("songs", JSON.stringify(pickedSongs.map((s) => ({ id: s }))));
     startTransition(() => {
-      createPlaylist(data).then((res) => {
+      editPlaylist(playlist.id, data).then((res) => {
         if (res) {
-          toast.success("Playlist is created!");
+          toast.success("Playlist is edited!");
           form.current?.reset();
           setFile(null);
-          dispatch(setPickedSongs(null));
+          setPickedSongs(playlist.songs.map((song) => song.id));
+          setOpen(false);
         }
       });
     });
@@ -74,24 +88,22 @@ export const CreatePlaylistForm = () => {
   return (
     <>
       <Dialog
-        onOpenChange={(open) => {
-          if (!open) {
-            form.current?.reset();
-            setFile(null);
-            dispatch(setPickedSongs(null));
-          }
+        open={open}
+        onOpenChange={(value) => {
+          setOpen(value);
+          setPickedSongs(playlist.songs.map((song) => song.id));
         }}
       >
         <DialogTrigger asChild>
-          <Button variant="default" size={"lg"}>
-            Create new playlist
+          <Button variant="default" size={"icon"}>
+            <Pencil />
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Create playlist</DialogTitle>
+            <DialogTitle>Edit playlist</DialogTitle>
             <DialogDescription>
-              Describe your playlist here. Click create when you're done.
+              Edit your playlist here. Click save when you're done.
             </DialogDescription>
           </DialogHeader>
           <form
@@ -99,7 +111,11 @@ export const CreatePlaylistForm = () => {
             action={submitHandler}
             className="flex flex-col gap-[20px] text-primary"
           >
-            <Input name="title" placeholder="Title" />
+            <Input
+              defaultValue={playlist.title}
+              name="title"
+              placeholder="Title"
+            />
             <Input name="image" file={file} setFile={setFile} type={"file"} />
             <Dialog
               open={select}
@@ -130,7 +146,18 @@ export const CreatePlaylistForm = () => {
                   {!!songs.length ? (
                     <>
                       <div className="h-[75%] overflow-auto">
-                        <Playlist songs={songs} inCreateMode />
+                        <Playlist
+                          songs={songs}
+                          inEditMode
+                          select={(id: string) =>
+                            setPickedSongs((prev) => {
+                              if (prev.includes(id))
+                                return prev.filter((value) => id !== value);
+                              return [...prev, id];
+                            })
+                          }
+                          pickedSongs={pickedSongs}
+                        />
                       </div>
                       <div className="flex items-center gap-4 justify-end">
                         <h4 className="font-semibold">
@@ -166,7 +193,7 @@ export const CreatePlaylistForm = () => {
               </DialogContent>
             </Dialog>
             <Button disabled={isPending} type="submit">
-              Create playlist
+              Save
             </Button>
           </form>
         </DialogContent>

@@ -9,10 +9,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  user: IUser & { _count: { subscribers: number } };
+  user: IUser & { _count?: { subscribers: number } };
   isAuth: string | undefined;
   isFollow: boolean;
-  currentPage: number;
+  currentPage?: number;
 }
 
 export const UserCard: FC<Props> = ({
@@ -43,7 +43,7 @@ export const UserCard: FC<Props> = ({
     <div
       className={cn(
         "grid grid-cols-[2fr_repeat(4,1fr)]",
-        !isAuth && "grid-cols-[2fr_repeat(3,1fr)]",
+        (!isAuth || !user._count) && "grid-cols-[2fr_repeat(3,1fr)]",
       )}
     >
       <div className={"flex gap-6 items-center p-4 rounded-[10px] "}>
@@ -65,9 +65,11 @@ export const UserCard: FC<Props> = ({
           </Link>
         </div>
       </div>
-      <div className={"flex items-center text-lg"}>
-        {user._count.subscribers} subs
-      </div>
+      {user._count && (
+        <div className={"flex items-center text-lg"}>
+          {user._count.subscribers} subs
+        </div>
+      )}
       <div className={"flex items-center text-lg"}>
         {user.songs.length} songs
       </div>
