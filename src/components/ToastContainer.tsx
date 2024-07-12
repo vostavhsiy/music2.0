@@ -16,32 +16,6 @@ export const socket = io(
 
 export const ToastContainer: FC<Props> = ({ profile }) => {
   useEffect(() => {
-    // if (profile) {
-    //   setSocket(connect(profile.id));
-    //   if (socket) {
-    //     socket.onmessage = async (ev) => {
-    //       const data = JSON.parse(ev.data);
-    //       if (data.type !== "connection") {
-    //         toast.info(data.text);
-    //       } else {
-    //         console.log("Соединение установлено.");
-    //       }
-    //       await updatePaths(["/"]);
-    //     };
-    //     socket.onclose = function (event) {
-    //       if (event.wasClean) {
-    //         console.log("Соединение закрыто чисто");
-    //       } else {
-    //         console.log("Обрыв соединения"); // например, "убит" процесс сервера
-    //       }
-    //       console.log("Код: " + event.code + " причина: " + event.reason);
-    //       reconnect();
-    //       setTimeout(() => {
-    //         setSocket(connect(profile.id));
-    //       }, 5000);
-    //     };
-    //   }
-    // }
     socket.removeAllListeners("message");
     if (profile && socket) {
       socket.send({ type: "connection", id: profile.id });

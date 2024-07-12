@@ -1,44 +1,56 @@
 import { Facebook, Github, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export function Footer() {
+interface Props {
+  auth?: boolean;
+}
+
+export function Footer({ auth }: Props) {
   return (
-    <div className="bg-background py-10 mt-10">
+    <div className={cn("bg-background py-10 mt-10", auth && "py-5 mt-5")}>
       <div className="flex flex-col gap-20 w-4/5 mx-auto">
-        <div className="flex items-stretch gap-10 justify-between">
-          <div className="w-1/3 flex flex-col justify-between gap-8">
-            <div className="flex items-center gap-4">
-              <Image
-                src={"/sidebar-logo.png"}
-                alt="logo"
-                width={500}
-                height={500}
-                className="w-[50px] aspect-square rounded-lg"
-              />
-              <span className="font-semibold text-lg">Musichub</span>
+        {!auth && (
+          <div className="flex items-stretch gap-10 justify-between">
+            <div className="w-1/3 flex flex-col justify-between gap-8">
+              <div className="flex items-center gap-4">
+                <Image
+                  src={"/sidebar-logo.png"}
+                  alt="logo"
+                  width={500}
+                  height={500}
+                  className="w-[50px] aspect-square rounded-lg"
+                />
+                <span className="font-semibold text-lg">Musichub</span>
+              </div>
+              <Link
+                className="text-2xl font-bold underline"
+                href={"tel: +7(951)7893502"}
+              >
+                +7 (951) 789 35 02
+              </Link>
+              <h3 className="text-base font-semibold">
+                atoyanrobert21@gmail.com
+              </h3>
             </div>
-            <Link
-              className="text-2xl font-bold underline"
-              href={"tel: +7(951)7893502"}
-            >
-              +7 (951) 789 35 02
-            </Link>
-            <h3 className="text-base font-semibold">
-              atoyanrobert21@gmail.com
-            </h3>
-          </div>
-          <div className="mt-[14px] w-1/2 flex flex-col gap-12">
-            <h3 className="font-semibold text-xl">Quick links</h3>
-            <div className="grid grid-cols-2 gap-10 underline">
-              <Link href={"/"}>Home</Link>
-              <Link href={"/songs/1"}>Audio</Link>
-              <Link href={"/playlists/1"}>Playlists</Link>
-              <Link href={"/users/1"}>Community</Link>
+            <div className="mt-[14px] w-1/2 flex flex-col gap-12">
+              <h3 className="font-semibold text-xl">Quick links</h3>
+              <div className="grid grid-cols-2 gap-10 underline">
+                <Link href={"/"}>Home</Link>
+                <Link href={"/songs/1"}>Audio</Link>
+                <Link href={"/playlists/1"}>Playlists</Link>
+                <Link href={"/users/1"}>Community</Link>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="border-t-2 pt-10 border-foreground/50">
+        )}
+        <div
+          className={cn(
+            "border-t-2 pt-10 border-foreground/50",
+            auth && "border-none pt-0",
+          )}
+        >
           <div className="relative flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Link

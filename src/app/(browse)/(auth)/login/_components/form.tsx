@@ -7,6 +7,7 @@ import { InputComponent } from "@/components/InputComponent";
 import { useRouter } from "next/navigation";
 import { login } from "@/actions/auth.actions";
 import { toast } from "sonner";
+import { Switch } from "@/components/ui/switch";
 
 export const Form = () => {
   const router = useRouter();
@@ -33,40 +34,57 @@ export const Form = () => {
             });
           });
         } else {
-          setFieldError("password", "Fill all fields");
+          toast.error("Fill all fields!");
         }
       }}
     >
-      {({ errors }) => (
+      {({ errors, values, setFieldValue }) => (
         <FormikForm className="flex flex-col gap-[20px] w-full">
-          <InputComponent name="login" placeholder={"Login"} />
-          <InputComponent
-            name="password"
-            type={"password"}
-            placeholder={"Password"}
-          />
-          <div className="flex items-center justify-between w-full">
+          <div className={"flex flex-col gap-3"}>
             <label
-              htmlFor="login-remember"
-              className="text-base font-semibold cursor-pointer select-none"
+              className={"text-primary text-sm font-semibold"}
+              htmlFor="login"
             >
-              Remember me
+              Login
+            </label>
+            <InputComponent id={"login"} name="login" placeholder={"Login"} />
+          </div>
+          <div className={"flex flex-col gap-3"}>
+            <label
+              className={"text-primary text-sm font-semibold"}
+              htmlFor="password"
+            >
+              Password
             </label>
             <InputComponent
-              id="login-remember"
-              type={"checkbox"}
-              name="rememberMe"
-              placeholder={"Login"}
-              className="w-[6%]"
+              id={"password"}
+              name="password"
+              type={"password"}
+              placeholder={"Password"}
             />
           </div>
 
-          {errors.password && (
-            <h3 className="text-center text-red-500 text-lg font-bold">
-              {errors.password}
-            </h3>
-          )}
-          <Button disabled={isPending} type={"submit"}>
+          <div className="flex items-center gap-5 w-full">
+            <Switch
+              checked={values.rememberMe}
+              onCheckedChange={async (checked) => {
+                await setFieldValue("rememberMe", checked);
+              }}
+              id="login-remember"
+              name="rememberMe"
+            />
+            <label
+              htmlFor="login-remember"
+              className="text-sm font-semibold cursor-pointer select-none"
+            >
+              Remember me
+            </label>
+          </div>
+          <Button
+            className={"bg-gradient-to-r from-teal-400 to-yellow-200"}
+            disabled={isPending}
+            type={"submit"}
+          >
             Login
           </Button>
         </FormikForm>

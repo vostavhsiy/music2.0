@@ -34,10 +34,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="grid grid-cols-[auto+1fr] text-primary h-screen overflow-hidden">
-            <Sidebar profile={profile} />
-            <Main profile={profile}>{children}</Main>
-          </div>
+          <div>{children}</div>
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />
           <Player />

@@ -20,12 +20,12 @@ export const Form = () => {
   const submitHandler = async (data: FormData) => {
     startTransition(() => {
       registration(data).then((res) => {
-        if (res) {
+        if (res && typeof res !== "string") {
           toast.success("You sign up successfully!");
           setFile(null);
           router.push("/login");
         } else {
-          toast.error("Error");
+          toast.error(res);
         }
       });
     });
@@ -33,10 +33,45 @@ export const Form = () => {
 
   return (
     <form action={submitHandler} className="flex flex-col gap-[20px] w-full">
-      <Input placeholder={"Login"} name={"login"} />
-      <Input placeholder={"Password"} name={"password"} type={"password"} />
-      <Input name={"image"} file={file} setFile={setFile} type={"file"} />
-      <Button type={"submit"}>Sign up</Button>
+      <div className={"flex flex-col gap-3"}>
+        <label className={"text-primary text-sm font-semibold"} htmlFor="login">
+          Login
+        </label>
+        <Input id={"login"} placeholder={"Login"} name={"login"} />
+      </div>
+      <div className={"flex flex-col gap-3"}>
+        <label
+          className={"text-primary text-sm font-semibold"}
+          htmlFor="password"
+        >
+          Password
+        </label>
+        <Input
+          id={"password"}
+          placeholder={"Password"}
+          name={"password"}
+          type={"password"}
+        />
+      </div>
+      <div className={"flex flex-col gap-3"}>
+        <label className={"text-primary text-sm font-semibold"} htmlFor="image">
+          Profile image
+        </label>
+        <Input
+          id={"image"}
+          name={"image"}
+          file={file}
+          setFile={setFile}
+          type={"file"}
+        />
+      </div>
+      <Button
+        className={"text-white bg-gradient-to-r from-fuchsia-500 to-cyan-500"}
+        type={"submit"}
+        disabled={isPending}
+      >
+        Sign up
+      </Button>
     </form>
   );
 };

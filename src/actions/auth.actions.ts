@@ -5,20 +5,22 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { IUser } from "@/lib/types/IUser";
+import { AxiosError } from "axios";
 
 export const registration = async (payload: FormData) => {
   try {
     const user = await AuthApi.registration(payload);
     if (user.message) {
       console.log(user.message);
-      return false;
+      return user.message;
     }
     revalidatePath("/users/[page]", "page");
     return user as IUser;
   } catch (err) {
-    const error = err as Error;
-    console.log(error.message);
-    return false;
+    const error = err as AxiosError;
+    console.log(error.response?.data);
+    //@ts-ignore
+    return error.response?.data?.message;
   }
 };
 

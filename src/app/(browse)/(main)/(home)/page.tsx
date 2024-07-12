@@ -35,11 +35,13 @@ export default async function Home() {
 
   return (
     <div className="w-full p-4">
-      <Buttons
-        lasts={user?.lasts.map((last) => last.song)}
-        subscribesLasts={subscribesLasts}
-        isRecentlyButton={isRecentlyButton}
-      />
+      {user && (
+        <Buttons
+          lasts={user?.lasts.map((last) => last.song)}
+          subscribesLasts={subscribesLasts}
+          isRecentlyButton={isRecentlyButton}
+        />
+      )}
       {!!popularSongs?.length && <PopularSongsSlider songs={popularSongs} />}
       {user && userPlaylists && (
         <UserPlaylistsSlider playlists={userPlaylists} userId={user.id} />
