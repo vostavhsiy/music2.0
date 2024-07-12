@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import React from "react";
+import React, { Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import ToastContainer from "@/components/ToastContainer";
 import { currentUser } from "@/lib/services/auth.service";
@@ -37,7 +37,9 @@ export default async function RootLayout({
           <div>{children}</div>
           {profile && <ToastContainer profile={profile} />}
           <Toaster closeButton />
-          <Player />
+          <Suspense>
+            <Player />
+          </Suspense>
         </Providers>
       </body>
     </html>
