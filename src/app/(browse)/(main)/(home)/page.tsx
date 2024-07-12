@@ -36,5 +36,43 @@ export default async function Home() {
 
   const isRecentlyButton = !!user;
 
-  return <div className="w-full p-4"></div>;
+  return (
+    <div className="w-full p-4">
+      {user && (
+        <Buttons
+          lasts={user?.lasts.map((last) => last.song)}
+          subscribesLasts={subscribesLasts}
+          isRecentlyButton={isRecentlyButton}
+        />
+      )}
+      {!!popularSongs?.length && <PopularSongsSlider songs={popularSongs} />}
+      {user && userPlaylists && (
+        <UserPlaylistsSlider playlists={userPlaylists} userId={user.id} />
+      )}
+      {!!popularPlaylists?.length && (
+        <PopularPlaylistsSlider playlists={popularPlaylists} />
+      )}
+      <div
+        className={cn(
+          "my-20 grid grid-cols-1 justify-items-center gap-20",
+          !user && "flex justify-center",
+        )}
+      >
+        {popularUsers && <PopularUsers users={popularUsers} />}
+        {subscribes && (
+          <PopularUsers
+            users={subscribes}
+            title={
+              <>
+                Your{" "}
+                <span className="bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
+                  subscribes
+                </span>
+              </>
+            }
+          />
+        )}
+      </div>
+    </div>
+  );
 }
