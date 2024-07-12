@@ -12,8 +12,7 @@ import { getRecommendedUsers } from "@/lib/services/users.service";
 import { PopularUsers } from "./_components/PopularUsers/PopularUsers";
 import Buttons from "./_components/Buttons";
 
-export const revalidate = 3600;
-export const dynamic = "force-static";
+export const revalidate = 60;
 
 export default async function Home() {
   const user = await currentUser();
