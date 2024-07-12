@@ -65,7 +65,7 @@ export const Profile: FC<Props> = ({ profile, isFollow, isAuth }) => {
           <div
             className={cn(
               "flex flex-col gap-5",
-              !!profile.playlists.length ? "w-1/2" : "w-full",
+              !!profile.playlists.length ? "w-3/5" : "w-full",
             )}
           >
             <h2 className="text-lg font-semibold">Audio:</h2>
@@ -73,7 +73,7 @@ export const Profile: FC<Props> = ({ profile, isFollow, isAuth }) => {
           </div>
         )}
         {!!profile.playlists.length && (
-          <div className="flex flex-col gap-5 w-1/2">
+          <div className="flex flex-col gap-5 w-2/5">
             <h2 className="text-lg font-semibold">Playlists:</h2>
             <div className="flex flex-col gap-5">
               {profile.playlists.map((playlist) => {

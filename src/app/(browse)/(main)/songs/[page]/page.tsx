@@ -9,6 +9,8 @@ import { Sort } from "@/app/(browse)/(main)/_components/Sort";
 import { SongSortType } from "@/lib/api/api.audio";
 import React from "react";
 
+export const revalidate = 3600;
+
 const SongsPage = async ({
   params,
   searchParams,

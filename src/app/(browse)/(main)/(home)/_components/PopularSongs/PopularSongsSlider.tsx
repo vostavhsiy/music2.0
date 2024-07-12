@@ -32,7 +32,10 @@ export function PopularSongsSlider({ songs }: Props) {
             songs
           </span>
         </h2>
-        <Link className="text-slate-300 uppercase" href="/songs/1?sortBy=listens">
+        <Link
+          className="text-slate-300 uppercase"
+          href="/songs/1?sortBy=listens"
+        >
           See all
         </Link>
       </div>

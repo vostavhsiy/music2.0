@@ -111,11 +111,15 @@ export const CreatePlaylistForm = () => {
             >
               <DialogTrigger
                 asChild
+                disabled={isPending}
                 onClick={() => {
                   setSelect(true);
                 }}
               >
-                <Button type={"button"}>Add audio to playlist</Button>
+                <Button disabled={isPending} type={"button"}>
+                  Add audio to playlist{" "}
+                  {!!pickedSongs?.length && `(${pickedSongs.length})`}
+                </Button>
               </DialogTrigger>
               <DialogContent className="w-[80%] h-[90%] bg-secondary/90 backdrop-blur py-0 max-w-screen-lg">
                 <div className="p-3 rounded-2xl flex flex-col gap-5">

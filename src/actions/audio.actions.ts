@@ -17,6 +17,7 @@ export const deleteSong = async (id: string, imageEtc?: string) => {
       console.log(res.message);
       return false;
     }
+    revalidatePath("/", "page");
     revalidatePath("/dashboard", "page");
     revalidatePath("/songs/[page]", "page");
     return res as { song: ISong; id: string };
@@ -92,6 +93,7 @@ export const editPlaylist = async (
       console.log(res.message);
       return false;
     }
+    revalidatePath("/", "page");
     revalidatePath("/dashboard", "page");
     revalidatePath("/playlists/[page]", "page");
     return res as IPlaylist;
@@ -112,6 +114,7 @@ export const deletePlaylist = async (id: string, imageEtc: string) => {
       console.log(res.message);
       return false;
     }
+    revalidatePath("/", "page");
     revalidatePath("/dashboard", "page");
     revalidatePath("/playlists/[page]", "page");
     return res;
@@ -128,6 +131,7 @@ export const addListenToSong = async (songId: string) => {
   if (!user || !accessToken) return false;
   try {
     const res = await AudioApi.addListenToSong(songId, user.id, accessToken);
+    revalidatePath("/", "page");
     revalidatePath("/dashboard", "page");
     revalidatePath("/songs/[page]", "page");
     revalidatePath("/playlists/[page]", "page");

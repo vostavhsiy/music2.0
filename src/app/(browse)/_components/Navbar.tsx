@@ -37,9 +37,14 @@ export function Navbar({ profile }: Props) {
           <Notifications notifications={profile.notifications} />
         </div>
       ) : (
-        <Button variant={"secondary"}>
-          <Link href={"/login"}>Sign in</Link>
-        </Button>
+        <div className="flex items-center gap-5">
+          <Button asChild variant={"secondary"}>
+            <Link href={"/registration"}>Sign up</Link>
+          </Button>
+          <Button asChild>
+            <Link href={"/login"}>Log in</Link>
+          </Button>
+        </div>
       )}
     </div>
   );

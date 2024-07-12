@@ -3,6 +3,8 @@ import { UsersApi } from "@/lib/api/api.users";
 import { notFound, redirect } from "next/navigation";
 import { Profile } from "@/app/(browse)/(main)/profile/[id]/_components/Profile";
 
+export const revalidate = 3600;
+
 const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const user = await currentUser();
 

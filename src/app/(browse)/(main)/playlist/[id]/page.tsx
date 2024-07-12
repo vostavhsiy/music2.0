@@ -12,6 +12,7 @@ interface Props {
   };
 }
 
+export const revalidate = 3600;
 const PlaylistPage: NextPage<Props> = async ({ params: { id } }) => {
   if (!id) redirect("/playlists/1");
 

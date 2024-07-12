@@ -15,6 +15,8 @@ interface Props {
   };
 }
 
+export const revalidate = 3600;
+
 const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
   const { playlists, total } = await AudioApi.getPlaylists(
     +params.page - 1,
@@ -24,7 +26,7 @@ const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
   );
 
   if (!total) {
-    return <></>;
+    return <h2>No playlists!</h2>;
   }
 
   return (
