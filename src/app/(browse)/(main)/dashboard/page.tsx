@@ -3,6 +3,7 @@ import { currentUser } from "@/lib/services/auth.service";
 import { redirect } from "next/navigation";
 import { ProfileImage } from "@/app/(browse)/(main)/dashboard/_components/ProfileImage";
 import { EditProfile } from "@/app/(browse)/(main)/dashboard/_components/EditProfile";
+import { LogoutButton } from "@/components/LogoutButton";
 
 const DashboardPage = async () => {
   const profile = await currentUser();
@@ -34,7 +35,10 @@ const DashboardPage = async () => {
               {profile.subscribs.length} subscribes
             </h3>
           </div>
-          <EditProfile profile={profile} />
+          <div className={"flex flex-col gap-3"}>
+            <EditProfile profile={profile} />
+            <LogoutButton />
+          </div>
         </div>
       </div>
     </div>
