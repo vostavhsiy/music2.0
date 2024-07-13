@@ -1,16 +1,22 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useEffect } from "react";
 
-export const Error = ({
+export const ErrorComponent = ({
   error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) => {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <div className={"h-screen flex flex-col gap-8 items-center justify-center"}>
       <Link href={"/"}>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { ErrorComponent } from "@/components/Error";
 
 export default function Error({
   error,
@@ -10,16 +10,5 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
-
-  return (
-    <div className={"h-screen flex flex-col gap-6 items-center justify-center"}>
-      <h2 className={"font-semibold text-lg"}>Something went wrong!</h2>
-      <Button size={"lg"} asChild onClick={() => reset()}>
-        <a href="/">Try again</a>
-      </Button>
-    </div>
-  );
+  return <ErrorComponent error={error} reset={reset} />;
 }
