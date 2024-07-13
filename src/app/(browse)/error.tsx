@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className={"h-screen flex items-center justify-center"}>
+    <div className={"h-screen flex flex-col gap-6 items-center justify-center"}>
       <h2 className={"font-semibold text-lg"}>Something went wrong!</h2>
       <Button size={"lg"} onClick={() => reset()}>
         Try again
