@@ -23,7 +23,7 @@ export function PopularSong({ song, playlist }: Props) {
   return (
     <div
       className={cn(
-        "select-none flex flex-col gap-4 rounded-xl bg-secondary p-2"
+        "select-none flex flex-col gap-4 rounded-xl bg-secondary p-2",
       )}
     >
       <div className="p-[2px] bg-gradient-to-r from-teal-400 to-yellow-200 rounded-lg">
@@ -32,12 +32,16 @@ export function PopularSong({ song, playlist }: Props) {
           alt={"user"}
           width={500}
           height={500}
-          className={cn("rounded-lg w-full aspect-square object-cover object-center")}
+          className={cn(
+            "rounded-lg w-full aspect-square object-cover object-center",
+          )}
         />
       </div>
       <div className="flex flex-col items-center gap-3">
-        <div className={cn("flex flex-col items-center gap-2")}>
-          <h3 className="text-lg font-semibold">{song.title}</h3>
+        <div className={cn("flex flex-col items-center gap-2 w-full")}>
+          <h3 className="text-lg font-semibold text-nowrap w-full overflow-hidden text-center px-3">
+            {song.title}
+          </h3>
           <h4 className="text-sm text-zinc-500 font-semibold">{song.author}</h4>
         </div>
         <div className="flex items-center gap-2">
