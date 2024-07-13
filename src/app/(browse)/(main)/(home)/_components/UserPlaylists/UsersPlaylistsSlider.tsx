@@ -34,7 +34,10 @@ export function UserPlaylistsSlider({ playlists, userId }: Props) {
             playlists
           </span>
         </h2>
-        <Link className="text-slate-300 uppercase" href={`/profile/${userId}`}>
+        <Link
+          className="text-slate-300 uppercase"
+          href={`/dashboard/playlists`}
+        >
           See all
         </Link>
       </div>
