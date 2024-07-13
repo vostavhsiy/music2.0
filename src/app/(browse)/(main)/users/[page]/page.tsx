@@ -2,7 +2,7 @@ import { getUsersPage } from "@/lib/services/users.service";
 import { currentUser } from "@/lib/services/auth.service";
 import { UserCard } from "@/app/(browse)/(main)/users/[page]/_components/UserCard";
 import { Pagination } from "@/components/Pagination";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Sort } from "@/app/(browse)/(main)/_components/Sort";
 import { UsersSortType } from "@/lib/api/api.users";
 import { cn } from "@/lib/utils";
@@ -15,9 +15,7 @@ const UsersPage = async ({
   params: { page: string };
   searchParams: { size: string; search: string; sortBy?: UsersSortType };
 }) => {
-  if (isNaN(+params.page)) {
-    redirect("/");
-  }
+  if (isNaN(+params.page)) notFound();
 
   const res = await getUsersPage(
     +params.page - 1,

@@ -4,7 +4,7 @@ import { getSongsPage } from "@/lib/services/audio.service";
 import { Song } from "@/components/Song";
 import { currentUser } from "@/lib/services/auth.service";
 import { Playlist } from "@/components/Player/Playlist";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Sort } from "@/app/(browse)/(main)/_components/Sort";
 import { SongSortType } from "@/lib/api/api.audio";
 import React from "react";
@@ -22,6 +22,8 @@ const SongsPage = async ({
     sortBy?: SongSortType;
   };
 }) => {
+  if (isNaN(+params.page)) notFound();
+
   const res = await getSongsPage(
     +params.page - 1,
     searchParams.search,

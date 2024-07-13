@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AudioApi } from "@/lib/api/api.audio";
 import Image from "next/image";
 import React from "react";
@@ -18,10 +18,11 @@ const PlaylistPage: NextPage<Props> = async ({ params: { id } }) => {
 
   const playlist = await AudioApi.getPlaylist(id);
   if (!playlist) {
-    redirect("/playlists/1");
+    notFound();
   }
   if (playlist.message) {
-    redirect("/playlists/1");
+    console.log(playlist.message);
+    notFound();
   }
 
   return (

@@ -3,6 +3,7 @@ import { NextPage } from "next";
 import { PlaylistCard } from "@/app/(browse)/(main)/songs/[page]/_components/PlaylistCard";
 import { Pagination } from "@/components/Pagination";
 import { Sort } from "@/app/(browse)/(main)/_components/Sort";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: {
@@ -18,6 +19,8 @@ interface Props {
 export const revalidate = 3600;
 
 const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
+  if (isNaN(+params.page)) notFound();
+
   const { playlists, total } = await AudioApi.getPlaylists(
     +params.page - 1,
     Number(searchParams.size) || 12,
