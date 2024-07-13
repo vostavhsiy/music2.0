@@ -135,7 +135,7 @@ export const Player = () => {
     <div
       className={cn(
         "fixed z-[1000] bottom-0 left-1/2 p-3 rounded-xl rounded-b-none -translate-x-1/2 bg-background border-[3px] backdrop-blur flex flex-col items-start justify-between animate-in duration-500",
-        collapse ? "w-[13%]" : "w-4/5 gap-3"
+        collapse ? "w-[13%]" : "w-4/5 gap-3",
       )}
     >
       {!collapse && (
@@ -150,23 +150,10 @@ export const Player = () => {
           <X />
         </Button>
       )}
-      {/* <Button
-        size={"xxl"}
-        variant={"secondary"}
-        className={cn(
-          "absolute top-0 left-1/2 -translate-x-1/2",
-          collapse ? "-translate-y-[80%]" : "-translate-y-1/2"
-        )}
-        onClick={() => {
-          setCollapse((prev) => !prev);
-        }}
-      >
-        {!collapse ? <ArrowDown /> : <ArrowUp />}
-      </Button> */}
       <div
         className={cn(
           "relative flex items-center w-full",
-          collapse ? "justify-center" : "pl-3 gap-10"
+          collapse ? "justify-center" : "pl-3 gap-10",
         )}
       >
         {!collapse && (
