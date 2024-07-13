@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from "react";
 import { Playlist } from "@/components/Player/Playlist";
 import Link from "next/link";
+import { getPlaylist } from "@/lib/services/audio.service";
 
 interface Props {
   params: {
@@ -16,7 +17,7 @@ export const revalidate = 3600;
 const PlaylistPage: NextPage<Props> = async ({ params: { id } }) => {
   if (!id) redirect("/playlists/1");
 
-  const playlist = await AudioApi.getPlaylist(id);
+  const playlist = await getPlaylist(id);
   if (!playlist) {
     notFound();
   }

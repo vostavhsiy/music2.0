@@ -5,6 +5,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { getAccessToken } from "@/actions/auth.actions";
 import { auth } from "@/lib/services/auth.service";
+import { AudioApi } from "@/lib/api/api.audio";
 
 export const getUsersPage = async (
   page?: number,
@@ -104,6 +105,14 @@ export const unfollow = async (id: string) => {
   } catch (err) {
     const error = err as Error;
     console.log(error.message);
+    return null;
+  }
+};
+
+export const getProfile = async (id: string) => {
+  try {
+    return await UsersApi.getUser(id);
+  } catch (e) {
     return null;
   }
 };

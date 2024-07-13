@@ -2,13 +2,14 @@ import { currentUser } from "@/lib/services/auth.service";
 import { UsersApi } from "@/lib/api/api.users";
 import { notFound, redirect } from "next/navigation";
 import { Profile } from "@/app/(browse)/(main)/profile/[id]/_components/Profile";
+import { getProfile } from "@/lib/services/users.service";
 
 export const revalidate = 3600;
 
 const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const user = await currentUser();
 
-  const profile = await UsersApi.getUser(params.id);
+  const profile = await getProfile(params.id);
   if (!profile || profile.message) notFound();
 
   if (profile.message) {

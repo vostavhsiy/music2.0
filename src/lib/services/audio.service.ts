@@ -85,3 +85,11 @@ export async function downloadAudio(src: string, title: string) {
     throw error;
   }
 }
+
+export const getPlaylist = async (id: string) => {
+  try {
+    return await AudioApi.getPlaylist(id);
+  } catch (e) {
+    return null;
+  }
+};
