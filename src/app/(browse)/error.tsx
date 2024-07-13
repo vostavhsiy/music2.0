@@ -17,8 +17,8 @@ export default function Error({
   return (
     <div className={"h-screen flex flex-col gap-6 items-center justify-center"}>
       <h2 className={"font-semibold text-lg"}>Something went wrong!</h2>
-      <Button size={"lg"} onClick={() => reset()}>
-        Try again
+      <Button size={"lg"} asChild onClick={() => reset()}>
+        <a href="/">Try again</a>
       </Button>
     </div>
   );
