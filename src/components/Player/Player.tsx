@@ -102,7 +102,7 @@ export const Player = () => {
           player.player.ontimeupdate = () => {
             dispatch(setCurrentTime(player.player.currentTime));
           };
-          addListenToSong(currentSong.id);
+          //addListenToSong(currentSong.id);
         })
         .catch(() => {
           if (direction === "next") next();
