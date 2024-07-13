@@ -9,7 +9,12 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const user = await currentUser();
 
   const profile = await UsersApi.getUser(params.id);
-  if (!profile) notFound();
+  if (!profile || profile.message) notFound();
+
+  if (profile.message) {
+    console.log(profile.message);
+    notFound();
+  }
 
   if (user?.id === profile.id) {
     return redirect("/dashboard");
