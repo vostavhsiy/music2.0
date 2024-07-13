@@ -51,7 +51,7 @@ const DashboardAudioPage = async () => {
           })}
         </div>
       ) : (
-        <h2>No follows!</h2>
+        <h2 className={"mt-4"}>No follows!</h2>
       )}
     </div>
   );
