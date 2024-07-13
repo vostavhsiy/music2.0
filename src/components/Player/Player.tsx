@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState, useTransition } from "react";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import {
   setCurrentTime,
@@ -45,6 +45,8 @@ export const Player = () => {
   const [direction, setDirection] = useState<"next" | "prev">("next");
 
   const [collapse, setCollapse] = useState(false);
+
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     dispatch(setPlayer(new AudioPlayer()));
@@ -102,7 +104,9 @@ export const Player = () => {
           player.player.ontimeupdate = () => {
             dispatch(setCurrentTime(player.player.currentTime));
           };
-          //addListenToSong(currentSong.id);
+          startTransition(() => {
+            addListenToSong(currentSong.id);
+          });
         })
         .catch(() => {
           if (direction === "next") next();

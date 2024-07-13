@@ -131,10 +131,6 @@ export const addListenToSong = async (songId: string) => {
   if (!user || !accessToken) return false;
   try {
     const res = await AudioApi.addListenToSong(songId, user.id, accessToken);
-    revalidatePath("/", "page");
-    revalidatePath("/dashboard", "page");
-    revalidatePath("/songs/[page]", "page");
-    revalidatePath("/playlists/[page]", "page");
     return res;
   } catch (e) {
     const err = e as Error;
