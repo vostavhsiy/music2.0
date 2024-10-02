@@ -59,7 +59,7 @@ export default function Buttons({
             <span className="text-lg ml-16 font-semibold">Recently played</span>
           </Button>
         </LastListens>
-        <LastListens songs={subscribesLasts || []}>
+        <LastListens label={"Friends played"} songs={subscribesLasts || []}>
           <Button
             variant={"outline"}
             className={cn(

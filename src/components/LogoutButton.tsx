@@ -15,12 +15,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
+import { setCurrentSong } from "@/store/reducers/audio/reducer";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 
 interface Props {
   inNavbar?: boolean;
 }
 
 export const LogoutButton: FC<Props> = ({ inNavbar }) => {
+  const dispatch = useAppDispatch();
+
   const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
@@ -29,6 +33,7 @@ export const LogoutButton: FC<Props> = ({ inNavbar }) => {
     startTransition(() => {
       logout().then(() => {
         setOpen(false);
+        dispatch(setCurrentSong(null));
       });
     });
   };

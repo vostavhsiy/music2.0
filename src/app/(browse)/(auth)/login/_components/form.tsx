@@ -8,8 +8,12 @@ import { useRouter } from "next/navigation";
 import { login } from "@/actions/auth.actions";
 import { toast } from "sonner";
 import { Switch } from "@/components/ui/switch";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { setCurrentSong } from "@/store/reducers/audio/reducer";
 
 export const Form = () => {
+  const dispatch = useAppDispatch();
+
   const router = useRouter();
 
   const [isPending, startTransition] = useTransition();
@@ -27,6 +31,7 @@ export const Form = () => {
             login(values).then((res) => {
               if (res) {
                 toast("You logged in");
+                dispatch(setCurrentSong(null));
                 router.push("/");
               } else {
                 toast("Error");

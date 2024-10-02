@@ -16,10 +16,11 @@ import { ListRestart } from "lucide-react";
 
 interface Props {
   songs: ISong[];
+  label?: string;
   children?: ReactNode;
 }
 
-export const LastListens: FC<Props> = ({ songs, children }) => {
+export const LastListens: FC<Props> = ({ songs, label, children }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -34,12 +35,12 @@ export const LastListens: FC<Props> = ({ songs, children }) => {
         className="flex flex-col gap-5 rounded-t-3xl h-[80%] overflow-auto"
       >
         <SheetHeader className="font-semibold">
-          Недавно прослушанные
+          {label || "Recently played"}
         </SheetHeader>
         {songs && songs.length ? (
           <Playlist songs={songs} />
         ) : (
-          <h4 className="text-lg text-destructive">Нет аудиозаписей!</h4>
+          <h4 className="text-lg text-destructive">No audio!</h4>
         )}
       </SheetContent>
     </Sheet>

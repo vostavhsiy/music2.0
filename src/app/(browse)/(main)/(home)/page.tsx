@@ -12,18 +12,20 @@ import { getRecommendedUsers } from "@/lib/services/users.service";
 import { PopularUsers } from "./_components/PopularUsers/PopularUsers";
 import Buttons from "./_components/Buttons";
 
-export const revalidate = 60;
-
 export default async function Home() {
   const user = await currentUser();
 
-  const popularUsers = await getRecommendedUsers();
   const subscribes =
     user?.subscribs && user?.subscribs.length
       ? user.subscribs.map(({ subscribed }) => subscribed)
       : null;
-  const popularSongs = await getPopularSongs();
-  const popularPlaylists = await getPopularPlaylists();
+
+  const [popularUsers, popularSongs, popularPlaylists] = await Promise.all([
+    getRecommendedUsers(),
+    getPopularSongs(),
+    getPopularPlaylists(),
+  ]);
+
   const userPlaylists =
     user?.playlists && user.playlists.length ? user.playlists : null;
 

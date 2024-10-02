@@ -32,11 +32,11 @@ export const CurrentPlaylist: FC<Props> = ({ children }) => {
         side={"bottom"}
         className="flex flex-col gap-5 rounded-t-3xl h-[80%] overflow-auto"
       >
-        <SheetHeader className="font-semibold">Текущий плейлист</SheetHeader>
+        <SheetHeader className="font-semibold">Current playlist</SheetHeader>
         {playlist ? (
           <Playlist songs={playlist} />
         ) : (
-          <h4 className="text-lg text-destructive">Нет аудиозаписей!</h4>
+          <h4 className="text-lg text-destructive">No audio!</h4>
         )}
       </SheetContent>
     </Sheet>

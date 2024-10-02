@@ -39,10 +39,10 @@ export function Navbar({ profile }: Props) {
       ) : (
         <div className="flex items-center gap-5">
           <Button asChild variant={"secondary"}>
-            <Link href={"/registration"}>Sign up</Link>
+            <a href={"/registration"}>Sign up</a>
           </Button>
           <Button asChild>
-            <Link href={"/login"}>Log in</Link>
+            <a href={"/login"}>Log in</a>
           </Button>
         </div>
       )}
