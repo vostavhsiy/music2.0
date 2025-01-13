@@ -22,6 +22,10 @@ export const CreateSongForm = () => {
 	const [isPending, startTransition] = useTransition()
 
 	const submitHandler = async (data: FormData) => {
+		if (!file) {
+			toast.error('Choose file!')
+			return
+		}
 		startTransition(() => {
 			createSong(data)
 				.then(res => {
