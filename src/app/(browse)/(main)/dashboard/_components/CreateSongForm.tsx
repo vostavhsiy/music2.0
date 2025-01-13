@@ -22,7 +22,7 @@ export const CreateSongForm = () => {
 	const [isPending, startTransition] = useTransition()
 
 	const submitHandler = async (data: FormData) => {
-		if (!data.get('file') || !data.get('title') || !data.get('author')) {
+		if (!file || !data.get('title') || !data.get('author')) {
 			toast.error('Fill all fields!')
 			return
 		}
