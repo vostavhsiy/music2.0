@@ -22,23 +22,21 @@ export const CreateSongForm = () => {
 	const [isPending, startTransition] = useTransition()
 
 	const submitHandler = async (data: FormData) => {
-		if (!file) {
-			toast.error('Choose file!')
+		if (!data.get('file') || !data.get('title') || !data.get('author')) {
+			toast.error('Fill all fields!')
 			return
 		}
 		startTransition(() => {
-			createSong(data)
-				.then(res => {
-					if (res) {
-						toast.success('Song added')
-						form.current?.reset()
-						setFile(null)
-						setImage(null)
-					}
-				})
-				.catch(err => {
-					toast.error(err.message)
-				})
+			createSong(data).then(res => {
+				if (res) {
+					toast.success('Song added')
+					form.current?.reset()
+					setFile(null)
+					setImage(null)
+				} else {
+					toast.error('Error!')
+				}
+			})
 		})
 	}
 

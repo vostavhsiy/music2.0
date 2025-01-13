@@ -21,6 +21,8 @@ export const CreateSongForm = () => {
           form.current?.reset();
           setFile(null);
           setImage(null);
+        } else {
+          toast.error("Error!")
         }
       });
     });
