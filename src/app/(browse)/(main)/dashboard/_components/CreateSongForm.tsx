@@ -28,13 +28,13 @@ export const CreateSongForm = () => {
 		}
 		startTransition(() => {
 			createSong(data).then(res => {
-				if (res) {
+				if (res && typeof res !== 'string') {
 					toast.success('Song added')
 					form.current?.reset()
 					setFile(null)
 					setImage(null)
 				} else {
-					toast.error('Error!')
+					toast.error(res)
 				}
 			})
 		})

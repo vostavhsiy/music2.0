@@ -50,13 +50,13 @@ export const CreatePlaylistForm = () => {
 		data.set('songs', JSON.stringify(pickedSongs.map(s => ({ id: s }))))
 		startTransition(() => {
 			createPlaylist(data).then(res => {
-				if (res) {
+				if (res && typeof res !== "string") {
 					toast.success('Playlist is created!')
 					form.current?.reset()
 					setFile(null)
 					dispatch(setPickedSongs(null))
 				} else {
-					toast.error('Error!')
+					toast.error(res)
 				}
 			})
 		})
