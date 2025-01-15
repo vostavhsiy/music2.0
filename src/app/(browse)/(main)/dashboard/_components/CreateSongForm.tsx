@@ -26,6 +26,14 @@ export const CreateSongForm = () => {
 			toast.error('Fill all fields!')
 			return
 		}
+		if (data.get('title')!.toString().length > 30) {
+			toast.error('Title must be under 30 symbols!')
+			return
+		}
+		if (data.get('author')!.toString().length > 30) {
+			toast.error("Author's name must be under 30 symbols!")
+			return
+		}
 		startTransition(() => {
 			createSong(data).then(res => {
 				if (res && typeof res !== 'string') {
