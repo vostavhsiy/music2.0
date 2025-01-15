@@ -64,7 +64,7 @@ const PlaylistPage: NextPage<Props> = async ({ params: { id } }) => {
 					>
 						<div></div>
 						<div>Title</div>
-						<div className={'mb:max-md:hidden flex justify-end items-center gap-2'}>
+						<div className={'mb:max-lg:hidden flex justify-end items-center gap-2'}>
 							<div className='mr-10'>date added</div>
 							<div className='w-1/2'>added by</div>
 							<div className='w-[40px]'></div>
