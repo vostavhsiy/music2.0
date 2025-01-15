@@ -27,7 +27,7 @@ export const PlaylistCard: FC<Props> = ({ playlist, isInProfile }) => {
 			>
 				<div
 					className={cn(
-						'w-[70px] bg-gradient-to-r from-teal-400 to-yellow-200 p-[2px] aspect-square'
+						'w-[70px] mb:max-md:w-[40px] bg-gradient-to-r from-teal-400 to-yellow-200 p-[2px] aspect-square'
 					)}
 				>
 					<Image
@@ -40,7 +40,7 @@ export const PlaylistCard: FC<Props> = ({ playlist, isInProfile }) => {
 						)}
 					/>
 				</div>
-				<h3 className={'text-lg'}>{playlist.title}</h3>
+				<h3 className={'text-lg mb:max-lg:text-sm'}>{playlist.title}</h3>
 			</Link>
 			<div className='flex items-center gap-2'>
 				{isInProfile && (

@@ -56,94 +56,94 @@ export const ProfileImage: FC<Props> = ({ profile }) => {
   }, [image]);
 
   return (
-    <Dialog
-      onOpenChange={(open) => {
-        if (!open) {
-          setImageBase64(null);
-          setImage(null);
-          setFetching(false);
-        }
-      }}
-    >
-      <DialogTrigger asChild>
-        <div
-          className={cn(
-            styles.image,
-            "w-[300px] aspect-square rounded-xl p-1 bg-gradient-to-r from-teal-400 to-yellow-200",
-          )}
-        >
-          <Image
-            src={profile.image || "/user.webp"}
-            alt={"user"}
-            width={500}
-            height={500}
-            className={
-              "bg-secondary w-full h-full object-cover object-center rounded-xl"
-            }
-          />
-          <div className={cn(styles.open, "bg-background/80")}>
-            <Button size={"sm"}>Change image</Button>
-          </div>
-        </div>
-      </DialogTrigger>
-      <DialogContent className={""}>
-        {pending && (
-          <div
-            className={
-              "absolute bg-background/80 top-0 left-0 w-full h-full flex items-center justify-center"
-            }
-          >
-            <h2>Loading...</h2>
-          </div>
-        )}
-        <DialogHeader>
-          <DialogTitle>Change profile image</DialogTitle>
-          <Button
-            variant={"outline"}
-            disabled={pending}
-            className={"!mt-8 cursor-pointer"}
-            asChild
-          >
-            <label htmlFor="edit-image">Upload image</label>
-          </Button>
-          <input
-            id={"edit-image"}
-            type="file"
-            hidden
-            onChange={(event) => {
-              event.target.files && setImage(event.target.files[0]);
-            }}
-          />
-          <div
-            className={cn(
-              image && "py-4",
-              "w-full border border-secondary mx-auto flex items-center justify-center",
-            )}
-          >
-            {fetching && <h2>Loading...</h2>}
-            {!fetching && imageBase64 && (
-              <div
-                className={
-                  "w-[80%] mx-auto rounded-lg p-1 bg-gradient-to-r from-teal-400 to-yellow-200"
-                }
-              >
-                <Image
-                  width={500}
-                  height={500}
-                  src={imageBase64}
-                  alt="image"
-                  className={"bg-secondary rounded-lg w-full object-contain"}
-                />
-              </div>
-            )}
-          </div>
-          {image && imageBase64 && !fetching && (
-            <Button disabled={pending} onClick={changeImage}>
-              Change image
-            </Button>
-          )}
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
-  );
+		<Dialog
+			onOpenChange={open => {
+				if (!open) {
+					setImageBase64(null)
+					setImage(null)
+					setFetching(false)
+				}
+			}}
+		>
+			<DialogTrigger asChild>
+				<div
+					className={cn(
+						styles.image,
+						'w-[300px] mb:max-lg:w-1/2 mb:max-md:w-full aspect-square rounded-xl p-1 bg-gradient-to-r from-teal-400 to-yellow-200'
+					)}
+				>
+					<Image
+						src={profile.image || '/user.webp'}
+						alt={'user'}
+						width={500}
+						height={500}
+						className={
+							'bg-secondary w-full h-full object-cover object-center rounded-xl'
+						}
+					/>
+					<div className={cn(styles.open, 'bg-background/80')}>
+						<Button size={'sm'}>Change image</Button>
+					</div>
+				</div>
+			</DialogTrigger>
+			<DialogContent className={''}>
+				{pending && (
+					<div
+						className={
+							'absolute bg-background/80 top-0 left-0 w-full h-full flex items-center justify-center'
+						}
+					>
+						<h2>Loading...</h2>
+					</div>
+				)}
+				<DialogHeader>
+					<DialogTitle>Change profile image</DialogTitle>
+					<Button
+						variant={'outline'}
+						disabled={pending}
+						className={'!mt-8 cursor-pointer'}
+						asChild
+					>
+						<label htmlFor='edit-image'>Upload image</label>
+					</Button>
+					<input
+						id={'edit-image'}
+						type='file'
+						hidden
+						onChange={event => {
+							event.target.files && setImage(event.target.files[0])
+						}}
+					/>
+					<div
+						className={cn(
+							image && 'py-4',
+							'w-full border border-secondary mx-auto flex items-center justify-center'
+						)}
+					>
+						{fetching && <h2>Loading...</h2>}
+						{!fetching && imageBase64 && (
+							<div
+								className={
+									'w-[80%] mx-auto rounded-lg p-1 bg-gradient-to-r from-teal-400 to-yellow-200'
+								}
+							>
+								<Image
+									width={500}
+									height={500}
+									src={imageBase64}
+									alt='image'
+									className={'bg-secondary rounded-lg w-full object-contain'}
+								/>
+							</div>
+						)}
+					</div>
+					{image && imageBase64 && !fetching && (
+						<Button disabled={pending} onClick={changeImage}>
+							Change image
+						</Button>
+					)}
+				</DialogHeader>
+			</DialogContent>
+		</Dialog>
+	)
 };

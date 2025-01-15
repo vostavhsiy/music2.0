@@ -60,31 +60,38 @@ export const Song: FC<Props> = ({
 						width={500}
 						height={500}
 						className={cn(
-							'object-cover object-center rounded aspect-square',
-							inSearch ? 'w-[30px]' : 'w-[70px]'
+							'mb:max-md:hidden object-cover object-center rounded aspect-square',
+							inSearch ? 'w-[30px]' : 'w-[70px] mb:max-md:w-[40px]'
 						)}
 					/>
 				)}
-				<div className={cn('flex flex-col', inSearch ? 'gap-0.5' : 'gap-2')}>
-					<h3>{song.title}</h3>
+				<div
+					className={cn(
+						'flex flex-col',
+						inSearch ? 'gap-0.5' : 'gap-2 mb:max-md:gap-0.5'
+					)}
+				>
+					<h3 className='mb:max-md:text-sm'>{song.title}</h3>
 					<h4 className='text-sm text-zinc-500 font-semibold'>{song.author}</h4>
 				</div>
 			</div>
 			<div
 				className={cn(
 					!inSearch && 'w-1/2',
-					'flex justify-end items-center gap-2'
+					'flex justify-end items-center gap-2 mb:max-md:w-auto'
 				)}
 			>
 				{!inSearch && (
 					<>
-						<p className={'font-semibold mr-10 text-primary/70'}>
+						<p
+							className={'mb:max-lg:hidden font-semibold mr-10 text-primary/70'}
+						>
 							{getDateInterval(song.createdAt)}
 						</p>
 						{!isInProfile && (
 							<Link
 								href={`/profile/${song.userid}`}
-								className='w-1/2 flex items-center gap-3'
+								className='w-1/2 flex items-center gap-3  mb:max-lg:hidden'
 							>
 								<div
 									className={cn(
@@ -140,6 +147,7 @@ export const Song: FC<Props> = ({
 						disabled={isPending}
 						variant={'destructive'}
 						size={'icon'}
+						className='mb:max-md:hidden'
 						onClick={async () => {
 							startTransition(() => {
 								deleteSong(song.id, song.image).then(res => {
@@ -160,6 +168,7 @@ export const Song: FC<Props> = ({
 						disabled={isPending}
 						variant={!pickedSongs.includes(song.id) ? 'outline' : 'destructive'}
 						size={'icon'}
+						className='mb:max-md:hidden'
 						onClick={async () => {
 							startTransition(() => {
 								dispatch(setPickedSongs(song.id))

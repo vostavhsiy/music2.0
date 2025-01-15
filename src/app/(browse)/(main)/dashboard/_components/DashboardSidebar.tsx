@@ -27,22 +27,22 @@ export const DashboardSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-full flex flex-col items-center gap-8 p-3 rounded-xl bg-background">
-      {links.map((link) => {
-        return (
-          <Link
-            key={link.href}
-            className={cn(
-              "w-full text-center hover:underline text-lg p-4 font-semibold rounded-lg",
-              pathname === link.href &&
-                "bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white",
-            )}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
-        );
-      })}
-    </div>
-  );
+		<div className='w-full flex mb:max-lg:flex-row flex-col items-center gap-8 p-3 rounded-xl bg-background mb:max-md:overflow-auto'>
+			{links.map(link => {
+				return (
+					<Link
+						key={link.href}
+						className={cn(
+							'w-full text-center hover:underline text-lg p-4 font-semibold rounded-lg',
+							pathname === link.href &&
+								'bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white'
+						)}
+						href={link.href}
+					>
+						{link.label}
+					</Link>
+				)
+			})}
+		</div>
+	)
 };

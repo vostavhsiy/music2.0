@@ -68,7 +68,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
   };
 
   return (
-    <div className={cn(" relative h-[60%]", className || "")}>
+    <div className={cn("relative h-[60%]", className || "")}>
       <Dialog
         open={isActive}
         onOpenChange={(open) => {
@@ -113,7 +113,7 @@ export const SearchInput: FC<Props> = ({ className }) => {
             />
           </form>
           {(!!songs.length || !!users.length || !!playlists.length) && (
-            <div className="p-3 flex flex-col gap-3 ">
+            <div className="p-3 flex flex-col gap-3 overflow-auto">
               {!!songs.length && (
                 <div className="flex flex-col gap-2">
                   <h4 className="text-base font-semibold">Audio</h4>

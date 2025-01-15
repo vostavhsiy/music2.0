@@ -47,7 +47,7 @@ const PlaylistsPage: NextPage<Props> = async ({ params, searchParams }) => {
 					}
 				/>
 			</div>
-			<div className='grid grid-cols-4 gap-5 max-w-[1600px] mx-auto'>
+			<div className='grid grid-cols-4 mb:max-md:grid-cols-1 mb:max-md:gap-8 gap-5 max-w-[1600px] mx-auto'>
 				{playlists.map(playlist => {
 					return <PlaylistCard key={playlist.id} playlist={playlist} />
 				})}

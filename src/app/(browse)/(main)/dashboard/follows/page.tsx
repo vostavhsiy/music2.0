@@ -10,51 +10,51 @@ const DashboardAudioPage = async () => {
   if (!profile) redirect("/login");
 
   return (
-    <div className="p-6">
-      <h2 className={"text-xl mb-8 font-semibold"}>
-        Your{" "}
-        <span
-          className={
-            "bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent"
-          }
-        >
-          subscribes
-        </span>
-      </h2>
-      <div
-        className={cn(
-          "grid grid-cols-[2fr_repeat(3,1fr)] text-primary/40 uppercase text-sm font-semibold",
-        )}
-      >
-        <div className="ml-4">Login</div>
-        <div>Audio</div>
-        <div>Playlists</div>
-        {profile?.id && <div>Actions</div>}
-      </div>
-      <div className={"h-[2px] bg-primary/30 rounded-xl mt-4"}></div>
-      {!!profile.subscribs.length ? (
-        <div className="flex flex-col gap-5">
-          {profile.subscribs.map(({ subscribed: user }, index) => {
-            return (
-              <>
-                <UserCard
-                  key={user.id}
-                  user={user}
-                  isAuth={profile?.id}
-                  isFollow
-                />
-                {index < profile.subscribs.length - 1 && (
-                  <div className={"h-[2px] bg-primary/30 rounded-xl"}></div>
-                )}
-              </>
-            );
-          })}
-        </div>
-      ) : (
-        <h2 className={"mt-4"}>No follows!</h2>
-      )}
-    </div>
-  );
+		<div className='p-6'>
+			<h2 className={'text-xl mb-8 font-semibold'}>
+				Your{' '}
+				<span
+					className={
+						'bg-gradient-to-r from-fuchsia-500 to-cyan-500 bg-clip-text text-transparent'
+					}
+				>
+					subscribes
+				</span>
+			</h2>
+			<div
+				className={cn(
+					'grid grid-cols-[2fr_repeat(3,1fr)] mb:max-lg:flex mb:max-lg:items-center mb:max-lg:justify-between text-primary/40 uppercase text-sm font-semibold'
+				)}
+			>
+				<div className='ml-4'>Login</div>
+				<div className='mb:max-lg:hidden'>Audio</div>
+				<div className='mb:max-lg:hidden'>Playlists</div>
+				{profile?.id && <div>Actions</div>}
+			</div>
+			<div className={'h-[2px] bg-primary/30 rounded-xl mt-4'}></div>
+			{!!profile.subscribs.length ? (
+				<div className='flex flex-col gap-5'>
+					{profile.subscribs.map(({ subscribed: user }, index) => {
+						return (
+							<>
+								<UserCard
+									key={user.id}
+									user={user}
+									isAuth={profile?.id}
+									isFollow
+								/>
+								{index < profile.subscribs.length - 1 && (
+									<div className={'h-[2px] bg-primary/30 rounded-xl'}></div>
+								)}
+							</>
+						)
+					})}
+				</div>
+			) : (
+				<h2 className={'mt-4'}>No follows!</h2>
+			)}
+		</div>
+	)
 };
 
 export default DashboardAudioPage;

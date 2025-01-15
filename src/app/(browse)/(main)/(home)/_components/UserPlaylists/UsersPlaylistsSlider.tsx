@@ -26,70 +26,73 @@ export function UserPlaylistsSlider({ playlists, userId }: Props) {
   }, []);
 
   return (
-    <div className="mt-20">
-      <div className="mb-8 text-primary flex justify-between gap-2 items-center">
-        <h2 className="text-4xl font-semibold">
-          Your{" "}
-          <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-            playlists
-          </span>
-        </h2>
-        <Link
-          className="text-slate-300 uppercase"
-          href={`/dashboard/playlists`}
-        >
-          See all
-        </Link>
-      </div>
-      <div className="flex items-stretch gap-2">
-        <Swiper
-          className="w-full"
-          modules={[Scrollbar]}
-          scrollbar={{
-            draggable: true,
-            hide: true,
-          }}
-          spaceBetween={50}
-          slidesPerView={1}
-          onBeforeInit={(swiper) => {
-            sliderRef.current = swiper;
-          }}
-          onSlideChange={(swiper) => {
-            if (swiper.isEnd) {
-              nextEl.current?.setAttribute("disabled", "true");
-            } else {
-              nextEl.current?.removeAttribute("disabled");
-            }
-          }}
-          breakpoints={{
-            1900: {
-              slidesPerView: 5,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
-          }}
-        >
-          {playlists.map((playlist) => {
-            return (
-              <SwiperSlide key={playlist.id}>
-                <UserPlaylist playlist={playlist} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-        <div className="w-20 flex items-center justify-center">
-          <Button
-            ref={nextEl}
-            className="rounded-full"
-            size={"icon"}
-            variant={"outline"}
-            onClick={handleNext}
-          >
-            <ChevronRight />
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
+		<div className='mt-20'>
+			<div className='mb-8 mb:max-md:mb-4 text-primary flex mb:max-md:flex-col justify-between gap-2 items-center'>
+				<h2 className='text-4xl mb:max-md:text-3xl font-semibold'>
+					Your{' '}
+					<span className='bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent'>
+						playlists
+					</span>
+				</h2>
+				<Link
+					className='text-slate-300 uppercase'
+					href={`/dashboard/playlists`}
+				>
+					See all
+				</Link>
+			</div>
+			<div className='flex items-stretch gap-2'>
+				<Swiper
+					className='w-full'
+					modules={[Scrollbar]}
+					scrollbar={{
+						draggable: true,
+						hide: true,
+					}}
+					spaceBetween={50}
+					slidesPerView={1}
+					onBeforeInit={swiper => {
+						sliderRef.current = swiper
+					}}
+					onSlideChange={swiper => {
+						if (swiper.isEnd) {
+							nextEl.current?.setAttribute('disabled', 'true')
+						} else {
+							nextEl.current?.removeAttribute('disabled')
+						}
+					}}
+					breakpoints={{
+						1900: {
+							slidesPerView: 5,
+						},
+						1024: {
+							slidesPerView: 4,
+						},
+						768: {
+							slidesPerView: 2,
+						},
+					}}
+				>
+					{playlists.map(playlist => {
+						return (
+							<SwiperSlide key={playlist.id}>
+								<UserPlaylist playlist={playlist} />
+							</SwiperSlide>
+						)
+					})}
+				</Swiper>
+				<div className='w-20 flex items-center justify-center'>
+					<Button
+						ref={nextEl}
+						className='rounded-full'
+						size={'icon'}
+						variant={'outline'}
+						onClick={handleNext}
+					>
+						<ChevronRight />
+					</Button>
+				</div>
+			</div>
+		</div>
+	)
 }

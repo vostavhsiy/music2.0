@@ -41,14 +41,14 @@ const UsersPage = async ({
 			</div>
 			<div
 				className={cn(
-					'grid grid-cols-[2fr_repeat(4,1fr)] text-primary/40 uppercase text-sm font-semibold',
+					'grid grid-cols-[2fr_repeat(4,1fr)] text-primary/40 uppercase text-sm font-semibold mb:max-lg:flex mb:max-lg:justify-between mb:max-lg:items-center',
 					!profile?.id && 'grid-cols-[2fr_repeat(3,1fr)]'
 				)}
 			>
 				<div className='ml-4'>Login</div>
-				<div>Subs</div>
-				<div>Audio</div>
-				<div>Playlists</div>
+				<div className='mb:max-lg:hidden'>Subs</div>
+				<div className='mb:max-lg:hidden'>Audio</div>
+				<div className='mb:max-lg:hidden'>Playlists</div>
 				{profile?.id && <div>Actions</div>}
 			</div>
 			<div className={'h-[2px] bg-primary/30 rounded-xl mt-4'}></div>

@@ -56,8 +56,8 @@ const SongsPage = async ({
 					<div></div>
 					<div>Title</div>
 					<div className={'flex justify-end items-center gap-2'}>
-						<div className='mr-10'>date added</div>
-						<div className='w-1/2'>added by</div>
+						<div className='mr-10 mb:max-lg:hidden'>date added</div>
+						<div className='w-1/2  mb:max-lg:hidden'>added by</div>
 						<div className='w-[40px]'></div>
 					</div>
 				</div>

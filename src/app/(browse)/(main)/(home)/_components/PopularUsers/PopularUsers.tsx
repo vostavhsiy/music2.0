@@ -12,7 +12,7 @@ interface Props {
 export function PopularUsers({ users, title }: Props) {
   return (
     <div className="w-full flex flex-col gap-10">
-      <h2 className="text-4xl font-bold">
+      <h2 className="text-4xl mb:max-md:text-3xl text-center font-bold">
         {title || (
           <>
             Popular{" "}
@@ -25,7 +25,7 @@ export function PopularUsers({ users, title }: Props) {
       <div className="mx-auto w-[90%] p-1 rounded-xl bg-gradient-to-r from-fuchsia-500 to-pink-500">
         <div
           className={cn(
-            "w-full grid grid-cols-4 rounded-xl bg-secondary overflow-hidden",
+            "w-full grid grid-cols-4 mb:max-lg:grid-cols-1 rounded-xl bg-secondary overflow-hidden",
             styles.bg,
           )}
         >
