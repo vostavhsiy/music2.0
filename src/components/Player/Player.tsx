@@ -291,6 +291,7 @@ const TrackDuration: FC<{ player: AudioPlayer; collapse?: boolean }> = ({
 			<Slider
 				value={[time]}
 				max={player.player.duration}
+				onClick={event => event.stopPropagation()}
 				onValueChange={([value]) => {
 					dispatch(setCurrentTime(value))
 					if (!player.player.paused) player.stop()
@@ -374,6 +375,7 @@ const TrackVolume: FC<{ player: AudioPlayer }> = ({ player }) => {
 				{volume > 50 && <Volume2 />}
 			</Button>
 			<Slider
+				onClick={event => event.stopPropagation()}
 				value={[volume]}
 				max={100}
 				onValueChange={([value]) => {
