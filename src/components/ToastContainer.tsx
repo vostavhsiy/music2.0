@@ -11,9 +11,9 @@ interface Props {
 }
 
 export const socket = io(
-	process.env.NEXT_PUBLIC_API_URL + '/ws' || 'http://localhost:5001',
+	process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001',
 	{
-		// path: '/server/ws',
+		// path: '/server/ws/socket.io',
 	}
 )
 
