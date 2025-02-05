@@ -50,7 +50,7 @@ export function PopularSong({ song, playlist }: Props) {
 						<Button
 							size={'icon'}
 							variant={'outline'}
-							disabled={isPending}
+							disabled={isPending || downloadPending}
 							onClick={() => {
 								setDownloadPending(true)
 								startTransition(() => {
