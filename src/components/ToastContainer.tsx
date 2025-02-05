@@ -15,7 +15,7 @@ export const socket = io(
 	{
 		path: '/server/ws',
 		secure: process.env.NODE_ENV === 'production',
-		rejectUnauthorized: process.env.NODE_ENV === 'production',
+		rejectUnauthorized: false,
 	}
 )
 
