@@ -14,7 +14,7 @@ export const socket = io(
 	process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001',
 	{
 		path: '/server/ws',
-		secure: process.env.NODE_ENV === 'production',
+		secure: true,
 		rejectUnauthorized: false,
 	}
 )
