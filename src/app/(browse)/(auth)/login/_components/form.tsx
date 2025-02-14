@@ -34,7 +34,7 @@ export const Form = () => {
 								dispatch(setCurrentSong(null))
 								router.push('/')
 							} else {
-								toast.error(res)
+								toast.error(res || 'Error! Try again.')
 							}
 						})
 					})

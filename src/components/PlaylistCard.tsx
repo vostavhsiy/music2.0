@@ -56,7 +56,7 @@ export const PlaylistCard: FC<Props> = ({ playlist, isInProfile }) => {
 										if (res && typeof res !== 'string') {
 											toast.success('Playlist deleted')
 										} else {
-											toast.error(res)
+											toast.error(res || 'Error! Try again.')
 										}
 									})
 								})

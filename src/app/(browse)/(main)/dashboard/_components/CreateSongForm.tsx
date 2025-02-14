@@ -42,7 +42,7 @@ export const CreateSongForm = () => {
 					setFile(null)
 					setImage(null)
 				} else {
-					toast.error(res)
+					toast.error(res || "Error! Try again.")
 				}
 			})
 		})

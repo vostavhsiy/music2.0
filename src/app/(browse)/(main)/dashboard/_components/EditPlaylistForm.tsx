@@ -66,7 +66,7 @@ export const EditPlaylistForm: FC<Props> = ({ playlist }) => {
 					setPickedSongs(playlist.songs.map(song => song.id))
 					setOpen(false)
 				} else {
-					toast.error(res)
+					toast.error(res || 'Error! Try again.')
 				}
 			})
 		})

@@ -46,7 +46,7 @@ export const CreatePlaylistForm = () => {
 					setFile(null)
 					dispatch(setPickedSongs(null))
 				} else {
-					toast.error(res)
+					toast.error(res || 'Error! Try again.')
 				}
 			})
 		})

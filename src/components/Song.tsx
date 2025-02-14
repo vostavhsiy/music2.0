@@ -154,7 +154,7 @@ export const Song: FC<Props> = ({
 									if (res && typeof res !== 'string') {
 										toast.success('Song deleted')
 									} else {
-										toast.error(res)
+										toast.error(res || 'Error! Try again.')
 									}
 								})
 							})
