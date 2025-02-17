@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import { ReactNode } from "react";
-import { Provider } from "react-redux";
-import { store } from "@/store/store";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
+import { store } from '@/store/store'
+import { ReactNode } from 'react'
+import { Provider } from 'react-redux'
 
 export const Providers = ({ children }: { children: ReactNode }) => {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <Provider store={store}>{children}</Provider>
-    </ThemeProvider>
-  );
-};
+	return (
+		<ThemeProvider attribute='class' defaultTheme='light' enableSystem>
+			<Provider store={store}>{children}</Provider>
+		</ThemeProvider>
+	)
+}
