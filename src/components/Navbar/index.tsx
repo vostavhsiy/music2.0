@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { ListMusic, Music, Users } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FC, useEffect } from 'react'
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { LastListens } from './LastListens'
@@ -19,6 +20,8 @@ interface Props {
 }
 
 export const Navbar: FC<Props> = ({ user, collapse, setCollapse }) => {
+	const pathname = usePathname()
+
 	const isMobile = useIsMobile()
 
 	const handleLinkClick = () => {
@@ -79,6 +82,9 @@ export const Navbar: FC<Props> = ({ user, collapse, setCollapse }) => {
 						href={'/songs/1'}
 						className={cn(
 							'hover:text-destructive transition-all flex items-center gap-2',
+							pathname.startsWith('/songs') &&
+								pathname !== '/' &&
+								'text-destructive',
 							collapse && 'gap-0 mb:max-lg:gap-2'
 						)}
 					>
@@ -91,6 +97,9 @@ export const Navbar: FC<Props> = ({ user, collapse, setCollapse }) => {
 						href={'/users/1'}
 						className={cn(
 							'hover:text-destructive transition-all flex items-center gap-2',
+							pathname.startsWith('/users') &&
+								pathname !== '/' &&
+								'text-destructive',
 							collapse && 'gap-0 mb:max-lg:gap-2'
 						)}
 					>
@@ -103,6 +112,9 @@ export const Navbar: FC<Props> = ({ user, collapse, setCollapse }) => {
 						href={'/playlists/1'}
 						className={cn(
 							'hover:text-destructive transition-all flex items-center gap-2',
+							pathname.startsWith('/playlists') &&
+								pathname !== '/' &&
+								'text-destructive',
 							collapse && 'gap-0 mb:max-lg:gap-2'
 						)}
 					>
