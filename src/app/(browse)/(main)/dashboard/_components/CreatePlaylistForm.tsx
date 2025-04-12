@@ -102,7 +102,13 @@ export const CreatePlaylistForm = () => {
 						className='flex flex-col gap-[20px] text-primary'
 					>
 						<Input name='title' placeholder='Title' />
-						<Input name='image' file={file} setFile={setFile} type={'file'} />
+						<Input
+							name='image'
+							file={file}
+							setFile={setFile}
+							type={'file'}
+							accept='image/*'
+						/>
 						<Dialog
 							open={select}
 							onOpenChange={open => {

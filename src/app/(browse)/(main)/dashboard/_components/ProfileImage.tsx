@@ -1,61 +1,61 @@
-"use client";
+'use client'
 
-import { IUser } from "@/lib/types/IUser";
-import { FC, useEffect, useState, useTransition } from "react";
+import { editImage } from '@/actions/auth.actions'
+import { Button } from '@/components/ui/button'
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { getBase64 } from "@/lib/getBase64";
-import { cn } from "@/lib/utils";
-import { editImage } from "@/actions/auth.actions";
-import { toast } from "sonner";
-import styles from "./../dashboard.module.scss";
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog'
+import { getBase64 } from '@/lib/getBase64'
+import { IUser } from '@/lib/types/IUser'
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import { FC, useEffect, useState, useTransition } from 'react'
+import { toast } from 'sonner'
+import styles from './../dashboard.module.scss'
 
 interface Props {
-  profile: IUser;
+	profile: IUser
 }
 
 export const ProfileImage: FC<Props> = ({ profile }) => {
-  const [image, setImage] = useState<File | null>(null);
-  const [imageBase64, setImageBase64] = useState<string | null>(null);
-  const [fetching, setFetching] = useState(false);
+	const [image, setImage] = useState<File | null>(null)
+	const [imageBase64, setImageBase64] = useState<string | null>(null)
+	const [fetching, setFetching] = useState(false)
 
-  const [pending, startTransition] = useTransition();
+	const [pending, startTransition] = useTransition()
 
-  const changeImage = () => {
-    if (!image) {
-      return toast.error("Choose image!");
-    }
-    const formData = new FormData();
-    formData.append("image", image);
-    startTransition(() => {
-      editImage(formData).then((res) => {
-        if (!res) return toast.error("Something went wrong!");
-        setImageBase64(null);
-        setImage(null);
-        setFetching(false);
-        toast.success("Image has been changed!");
-      });
-    });
-  };
+	const changeImage = () => {
+		if (!image) {
+			return toast.error('Choose image!')
+		}
+		const formData = new FormData()
+		formData.append('image', image)
+		startTransition(() => {
+			editImage(formData).then(res => {
+				if (!res) return toast.error('Something went wrong!')
+				setImageBase64(null)
+				setImage(null)
+				setFetching(false)
+				toast.success('Image has been changed!')
+			})
+		})
+	}
 
-  useEffect(() => {
-    if (image) {
-      setFetching(true);
-      getBase64(image, (result) => {
-        setImageBase64(String(result));
-        setFetching(false);
-      });
-    }
-  }, [image]);
+	useEffect(() => {
+		if (image) {
+			setFetching(true)
+			getBase64(image, result => {
+				setImageBase64(String(result))
+				setFetching(false)
+			})
+		}
+	}, [image])
 
-  return (
+	return (
 		<Dialog
 			onOpenChange={open => {
 				if (!open) {
@@ -113,6 +113,7 @@ export const ProfileImage: FC<Props> = ({ profile }) => {
 						onChange={event => {
 							event.target.files && setImage(event.target.files[0])
 						}}
+						accept='image/*'
 					/>
 					<div
 						className={cn(
@@ -146,4 +147,4 @@ export const ProfileImage: FC<Props> = ({ profile }) => {
 			</DialogContent>
 		</Dialog>
 	)
-};
+}

@@ -42,7 +42,7 @@ export const CreateSongForm = () => {
 					setFile(null)
 					setImage(null)
 				} else {
-					toast.error(res || "Error! Try again.")
+					toast.error(res || 'Error! Try again.')
 				}
 			})
 		})
@@ -83,8 +83,15 @@ export const CreateSongForm = () => {
 						setFile={setFile}
 						type={'file'}
 						label={'Choose audio'}
+						accept='.mp3,audio/*'
 					/>
-					<Input name='image' file={image} setFile={setImage} type={'file'} />
+					<Input
+						name='image'
+						file={image}
+						setFile={setImage}
+						type={'file'}
+						accept='image/*'
+					/>
 					<Button disabled={isPending} type='submit'>
 						Add song
 					</Button>
