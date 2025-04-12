@@ -26,7 +26,7 @@ export const ToastContainer: FC<Props> = ({ profile }) => {
 			socket.send({ type: 'connection', id: profile.id })
 			socket.on('message', data => {
 				const msg = JSON.parse(data)
-				if (msg.type !== 'connection') {
+				if (msg.type !== 'connection' && msg.userId === profile.id) {
 					toast.info(msg.text)
 				} else {
 					console.log('The connection is established.')
